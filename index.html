@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
 	<script>(function () { const rawSet = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML').set;/* Object.freeze(Element.prototype); Object.freeze(HTMLDivElement.prototype);*/ Object.defineProperty(window, 'safeSetHTML', { value: function (element, html) { rawSet.call(element, html); }, writable: false, configurable: false }); })();</script>
@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="css/currencies.css">
 	<link rel="stylesheet" type="text/css" href="css/progressbars.css">
 	<link rel="stylesheet" type="text/css" href="css/modal.css">
-	<title>Progress Knight Quest</title>
+	<title>Progress knight 2</title>
 	<link rel="shortcut icon" href="img/logo.ico" />
 </head>
 
@@ -23,13 +23,13 @@
 	<div class="w3-margin">
 		<div class="header">
 			<img src="img/logos.png" alt="logos" />
-			<h3>Progress Knight Quest</h3>
+			<h3>Progress knight 2</h3>
 		</div>
 		<div id="offline_progress" hidden="hidden" class="panel w3-margin-left">
 			<h2>
 				<div>
 					<div style="margin-bottom: 0.1em; margin-top: 0.8em; width: 100%; text-align: center;">
-						<div>Offline Progress: <span id="offline_time"></span></div>
+						<div>离线进度：<span id="offline_time"></span></div>
 						<div class="req-progress-container">
 							<div class="req-pending-bar"></div>
 							<div class="req-progress-bar"></div>
@@ -37,7 +37,7 @@
 					</div>
 					<div>
 						<button id="skipButton" class="w3-button baritem button rebirth"
-							onClick="stopOfflineProgress()">Skip</button>
+							onClick="stopOfflineProgress()">跳过</button>
 					</div>
 				</div>
 			</h2>
@@ -61,50 +61,46 @@
 							<span id="challengeName"></span>
 							<div style="padding-top:0.3em;">
 								<div id="sidebarChallengeReward1" class="hidden"><span
-										class="color-happiness">Happiness</span> x<span
+										class="color-happiness">幸福度</span> x<span
 										id="sidebarCurrentChallengeBuff1"></span> / x<span
 										id="sidebarChallengeBuff1"></span></div>
 								<div id="sidebarChallengeReward2" class="hidden"><span
-										class="color-income">Income</span> x<span
+										class="color-income">收入</span> x<span
 										id="sidebarCurrentChallengeBuff2"></span> / x<span
 										id="sidebarChallengeBuff2"></span></div>
-								<div id="sidebarChallengeReward3" class="hidden"><span class="color-time-warping">Time
-										Warping</span> x<span id="sidebarCurrentChallengeBuff3"></span> / x<span
+								<div id="sidebarChallengeReward3" class="hidden"><span class="color-time-warping">时间扭曲</span> x<span id="sidebarCurrentChallengeBuff3"></span> / x<span
 										id="sidebarChallengeBuff3"></span></div>
 								<div id="sidebarChallengeReward4" class="hidden"><span
-										class="color-essence">Essence</span> x<span
+										class="color-essence">精华</span> x<span
 										id="sidebarCurrentChallengeBuff4"></span> / x<span
 										id="sidebarChallengeBuff4"></span></div>
-								<div id="sidebarChallengeReward5" class="hidden"><span class="color-evil">Evil</span>
+								<div id="sidebarChallengeReward5" class="hidden"><span class="color-evil">邪恶</span>
 									x<span id="sidebarCurrentChallengeBuff5"></span> / x<span
 										id="sidebarChallengeBuff5"></span></div>
-								<div id="sidebarChallengeReward6" class="hidden"><span class="color-dark-matter">Dark
-										Matter</span> x<span id="sidebarCurrentChallengeBuff6"></span> / x<span
+								<div id="sidebarChallengeReward6" class="hidden"><span class="color-dark-matter">暗物质</span> x<span id="sidebarCurrentChallengeBuff6"></span> / x<span
 										id="sidebarChallengeBuff6"></span></div>
 							</div>
 						</div>
 						<div class="text-caption" id="errorInfo" hidden="hidden">
-							<div>⚠️ Oh no! It looks like something on the site broke.. If this issue persists, feel free
-								to contact the developers.</div>
+							<div>⚠️ 糟了！网站上好像有什么东西坏了……如果此问题持续存在，请联系开发者。</div>
 							<br>
 						</div>
 						<div id="deathText" class="hidden">
-							<div class="text-caption" style="color: red">Age has caught up to you</div>
-							<div class="sidebar-element" style="color: gray">Your age has met your lifespan; use the
-								amulet to rebirth before you pass away</div>
+							<div class="text-caption" style="color: red">年龄已追上你</div>
+							<div class="sidebar-element" style="color: gray">你的年龄已达到寿命上限；在离世前使用护符转生</div>
 						</div>
 
 						<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
 							<div style="min-width: 14em;">
-								<div class="text-caption"><span id="ageDisplay">Age 14 Day 0</span></div>
+								<div class="text-caption"><span id="ageDisplay">年龄 14 天 0</span></div>
 								<div class="sidebar-element" style="color: gray">
-									Lifespan: <span id="lifespanDisplay">70</span> years
-									<br>Real Time: <span id="realtimeDisplay">00:00:00</span>
+									寿命：<span id="lifespanDisplay">70</span> 年
+									<br>现实时间：<span id="realtimeDisplay">00:00:00</span>
 									<div id="fps"></div>
 								</div>
 							</div>
 							<div style="padding-top: 0.2em;">
-								<button id="pauseButton" class="w3-button button" onClick="togglePause()">Pause</button>
+								<button id="pauseButton" class="w3-button button" onClick="togglePause()">暂停</button>
 								<div id="boostPanel" class="sidebar-element" style="color: gray">
 									<button id="boostButton" class="perk perk-boost" onClick="applyBoost()"><span
 											id="boostCooldownDisplay">00:00</span></button>
@@ -116,7 +112,7 @@
 						<div id="infoQuickButtons">
 						</div>
 
-						<div class="text-caption" style="padding-top: 1em">Balance:
+						<div class="text-caption" style="padding-top: 1em">余额：
 							<span id="coinDisplay">
 								<span></span>
 								<span></span>
@@ -127,7 +123,7 @@
 						</div>
 						<ul class="sidebar-element" style="padding-left: 1em;">
 							<li>
-								<span class="color-hypercubes">Net: </span><b id="signDisplay"></b>
+								<span class="color-hypercubes">净： </span><b id="signDisplay"></b>
 								<div id="netDisplay" style="display: inline;">
 									<span></span>
 									<span></span>
@@ -137,7 +133,7 @@
 								</div>
 							</li>
 							<li>
-								<span class="color-income">Income: </span>
+								<span class="color-income">收入： </span>
 								<div id="incomeDisplay" style="display: inline;">
 									<span></span>
 									<span></span>
@@ -147,7 +143,7 @@
 								</div>
 							</li>
 							<li>
-								<span style="color: red">Expense: </span>
+								<span style="color: red">支出： </span>
 								<div id="expenseDisplay" style="display: inline;">
 									<span></span>
 									<span></span>
@@ -158,43 +154,43 @@
 							</li>
 						</ul>
 
-						<div class="text-caption" style="padding-top: 0.2em"><span class="color-happiness">Happiness:
+						<div class="text-caption" style="padding-top: 0.2em"><span class="color-happiness">幸福度：
 							</span><span id="happinessDisplay"></span></div>
-						<div style="color: gray" class="sidebar-element">Affects all XP gain</div>
+						<div style="color: gray" class="sidebar-element">影响所有经验获取</div>
 						<div id="evilInfo" class="hidden">
-							<div class="text-caption"><span class="color-evil">Evil: </span><span
+							<div class="text-caption"><span class="color-evil">邪恶： </span><span
 									id="evilDisplay"></span></div>
-							<div style="color: gray" class="sidebar-element">Affects Dark Magic XP gain</div>
+							<div style="color: gray" class="sidebar-element">影响黑暗魔法经验获取</div>
 						</div>
 						<div id="essenceInfo" class="hidden">
-							<div class="text-caption"><span class="color-essence">Essence: </span><span
+							<div class="text-caption"><span class="color-essence">精华： </span><span
 									id="essenceDisplay"></span></div>
-							<div style="color: gray" class="sidebar-element">Affects Almightiness XP gain</div>
+							<div style="color: gray" class="sidebar-element">影响全能经验获取</div>
 						</div>
 						<div id="darkMatterInfo" class="hidden">
-							<div class="text-caption"><span class="color-dark-matter">Dark Matter: </span><span
+							<div class="text-caption"><span class="color-dark-matter">暗物质： </span><span
 									id="darkMatterDisplay"></span></div>
-							<div style="color: gray" class="sidebar-element">Affects all XP gain</div>
+							<div style="color: gray" class="sidebar-element">影响所有经验获取</div>
 						</div>
 						<div id="darkOrbsInfo" class="hidden tooltip" data-type="dark_orbs" data-name="dark_orbs">
-							<div class="text-caption"><span class="color-dark-orbs">Dark Orbs: </span><span
+							<div class="text-caption"><span class="color-dark-orbs">暗球： </span><span
 									id="darkOrbsDisplay"></span></div>
 							<div class="req-progress-container" style="display: block;">
 								<div class="req-pending-bar color-dark-matter"></div>
 								<div class="req-progress-bar color-dark-matter"></div>
 							</div>
-							<div style="color: gray" class="sidebar-element">Used to buy items in the Dark Matter shop
+							<div style="color: gray" class="sidebar-element">用于在暗物质商店购买物品
 							</div>
 						</div>
 						<div id="timeWarping">
-							<div class="text-caption"><span class="color-time-warping">Time Warping: </span><span
+							<div class="text-caption"><span class="color-time-warping">时间扭曲： </span><span
 									id="timeWarpingDisplay"></span></div>
-							<div style="color: gray" class="sidebar-element">Affects game speed</div>
+							<div style="color: gray" class="sidebar-element">影响游戏速度</div>
 						</div>
 						<div id="hypercubesInfo">
-							<div class="text-caption"><span class="color-hypercubes">Hypercubes: </span><span
+							<div class="text-caption"><span class="color-hypercubes">超立方体： </span><span
 									id="hypercubesDisplay"></span></div>
-							<div style="color: gray" class="sidebar-element">for Metaverse sacrifices</div>
+							<div style="color: gray" class="sidebar-element">用于元宇宙献祭</div>
 						</div>
 						<div id="sidebarQuickButtons">
 							<div id="quickButtons">
@@ -204,15 +200,15 @@
 								</div-->
 								<div id="sidebarEP" class="hidden">
 									<div>
-										<div class="color-evil text-caption">Evil Perk Points: <span class="color-evil"
+										<div class="color-evil text-caption">邪恶特权点：<span class="color-evil"
 												id="evilperksDisplaySideBar"></span></div>
 										<div id="evilperksLayoutSideBar" style="padding-top:0em">
 											<div class="evilperkItem">
 												<button id="evilperkSideBar1" data-type="evil_perk" data-name="1"
 													class="perk perk-sidebar evilperk evilperk-sidebar tooltip"
 													onclick="buyEvilPerk(1)">
-													<span>Eye Req: <span id="reqSideBar1" style="font-width: bold"
-															class="currency-bold epp-color"></span>y</span>
+													<span>眼睛需求：<span id="reqSideBar1" style="font-width: bold"
+															class="currency-bold epp-color"></span>年</span>
 													<span id="evilperkCostDivSideBar1"> <span id="evilperkCostSideBar1"
 															class="epp-color">1</span></span>
 												</button>
@@ -221,8 +217,8 @@
 												<button id="evilperkSideBar2" data-type="evil_perk" data-name="2"
 													class="perk perk-sidebar evilperk evilperk-sidebar tooltip"
 													onclick="buyEvilPerk(2)">
-													<span>Evil Req: <span id="reqSideBar2"
-															class="currency-bold epp-color"></span>y</span>
+													<span>邪恶需求：<span id="reqSideBar2"
+															class="currency-bold epp-color"></span>年</span>
 													<span id="evilperkCostDivSideBar2"> <span id="evilperkCostSideBar2"
 															class="epp-color">1</span></span>
 												</button>
@@ -231,8 +227,8 @@
 												<button id="evilperkSideBar3" data-type="evil_perk" data-name="3"
 													class="perk perk-sidebar evilperk evilperk-sidebar tooltip"
 													onclick="buyEvilPerk(3)">
-													<span>Void Req: <span id="reqSideBar3"
-															class="currency-bold epp-color"></span>y</span>
+													<span>虚空需求：<span id="reqSideBar3"
+															class="currency-bold epp-color"></span>年</span>
 													<span id="evilperkCostDivSideBar3"> <span id="evilperkCostSideBar3"
 															class="epp-color">1</span></span>
 												</button>
@@ -241,8 +237,8 @@
 												<button id="evilperkSideBar4" data-type="evil_perk" data-name="4"
 													class="perk perk-sidebar evilperk evilperk-sidebar tooltip"
 													onclick="buyEvilPerk(4)">
-													<span>Cel Req:<span id="reqSideBar4"
-															class="currency-bold epp-color"></span>y</span>
+													<span>天界需求：<span id="reqSideBar4"
+															class="currency-bold epp-color"></span>年</span>
 													<span id="evilperkCostDivSideBar4"> <span id="evilperkCostSideBar4"
 															class="epp-color">1</span></span>
 												</button>
@@ -251,7 +247,7 @@
 												<button id="evilperkSideBar5" data-type="evil_perk" data-name="5"
 													class="perk perk-sidebar evilperk evilperk-sidebar tooltip hidden"
 													onclick="buyEvilPerk(5)">
-													<span>Receive <span id="reqSideBar5"
+													<span>获得 <span id="reqSideBar5"
 															class="currency-bold color-essence"></span></span>
 													<span id="evilperkCostDivSideBar5"> <span id="evilperkCostSideBar5"
 															class="epp-color">1</span></span>
@@ -262,11 +258,10 @@
 								</div>
 
 								<div id="rebirthButton1" class="hidden">
-									<button class="w3-button button rebirth" onClick="rebirthOne()">Touch the
-										eye</button>
+									<button class="w3-button button rebirth" onClick="rebirthOne()">触碰眼睛</button>
 								</div>
 								<div id="rebirthButton2" class="hidden">
-									<button class="w3-button button rebirth" onClick="rebirthTwo()">Embrace evil: <span
+									<button class="w3-button button rebirth" onClick="rebirthTwo()">拥抱邪恶：<span
 											class="color-evil" id="evilGainButtonDisplay"></span>
 										<div class="req-progress-container">
 											<div class="req-pending-bar"></div>
@@ -275,7 +270,7 @@
 									</button>
 								</div>
 								<div id="rebirthButton3" class="hidden">
-									<button class="w3-button button rebirth" onClick="rebirthThree()">Transcend: <span
+									<button class="w3-button button rebirth" onClick="rebirthThree()">超越：<span
 											class="color-essence" id="essenceGainButtonDisplay"></span>
 										<div class="req-progress-container">
 											<div class="req-pending-bar"></div>
@@ -284,7 +279,7 @@
 									</button>
 								</div>
 								<div id="rebirthButton4" class="hidden">
-									<button class="w3-button button rebirth" onClick="rebirthFour()">Collapse: <span
+									<button class="w3-button button rebirth" onClick="rebirthFour()">坍缩：<span
 											class="color-dark-matter" id="darkMatterGainButtonDisplay"></span>
 										<div class="req-progress-container">
 											<div class="req-pending-bar"></div>
@@ -293,7 +288,7 @@
 									</button>
 								</div>
 								<div id="rebirthButton5" class="hidden">
-									<button class="w3-button button rebirth" onClick="rebirthFive()">Metaverse: <span
+									<button class="w3-button button rebirth" onClick="rebirthFive()">元宇宙：<span
 											id="metaversePerkPointsGainButtonDisplay"></span></button>
 								</div>
 							</div>
@@ -304,36 +299,36 @@
 				<div class="column">
 					<div id="tabcolumn" class="panel w3-margin-left tabs-tab-column">
 						<div class="w3-button w3-bar-item tabButton baritem" id="infoTabButton" onClick="setTab('info')"
-							data-short="In">Info</div>
+							data-short="In">信息</div>
 						<div class="w3-button w3-bar-item tabButton baritem" id="jobsTabButton" onClick="setTab('jobs')"
-							data-short="He">Hero</div>
+							data-short="He">英雄</div>
 						<div class="w3-button w3-bar-item tabButton baritem hidden" id="skillsTabButton"
-							onClick="setTab('skills')" data-short="Sk">Skills</div>
+							onClick="setTab('skills')" data-short="Sk">技能</div>
 						<div class="w3-button w3-bar-item tabButton baritem hidden" id="shopTabButton"
-							onClick="setTab('shop')" data-short="Sh">Shop</div>
+							onClick="setTab('shop')" data-short="Sh">商店</div>
 						<div class="w3-button w3-bar-item tabButton baritem" id="evilperksTabButton"
-							onClick="setTab('evilperks')" data-short="EP">Evil perks</div>
+							onClick="setTab('evilperks')" data-short="EP">邪恶特权</div>
 						<div class="w3-button w3-bar-item tabButton baritem" id="challengesTabButton"
-							onClick="setTab('challenges')" data-short="Ch">Challenges</div>
+							onClick="setTab('challenges')" data-short="Ch">挑战</div>
 						<div class="w3-button w3-bar-item tabButton baritem" id="milestonesTabButton"
-							onClick="setTab('milestones')" data-short="Mi">Milestones</div>
+							onClick="setTab('milestones')" data-short="Mi">里程碑</div>
 						<div class="w3-button w3-bar-item tabButton baritem" id="rebirthTabButton"
-							onClick="setTab('rebirth')" data-short="Am">Amulet</div>
+							onClick="setTab('rebirth')" data-short="Am">护符</div>
 						<div class="w3-button w3-bar-item tabButton baritem" id="darkMatterTabButton"
-							onClick="setTab('darkMatter')" data-short="DM">Dark Matter</div>
+							onClick="setTab('darkMatter')" data-short="DM">暗物质</div>
 						<div class="w3-button w3-bar-item tabButton baritem" id="metaverseTabButton"
-							onClick="setTab('metaverse')" data-short="Me">Metaverse</div>
+							onClick="setTab('metaverse')" data-short="Me">元宇宙</div>
 						<div class="w3-button w3-bar-item tabButton baritem" id="settingsTabButton"
-							onClick="setTab('settings')" data-short="Set">Settings</div>
+							onClick="setTab('settings')" data-short="Set">设置</div>
 					</div>
 					<div id="maincolumn" class="panel w3-margin-left w3-margin-top w3-padding tabs-main-column">
 						<div id="hero">
 							<template class="headerRowTaskTemplate">
 								<div class="tr">
 									<div class="th rowtitle single-line-text-pb"><span class="category"></span></div>
-									<div class="th rowtitle"><span>Level</span></div>
-									<div class="th rowtitle"><span class="valueType">Value type</span></div>
-									<div class="th rowtitle maxLevel"><span>Max</span></div>
+									<div class="th rowtitle"><span>等级</span></div>
+									<div class="th rowtitle"><span class="valueType">数值类型</span></div>
+									<div class="th rowtitle maxLevel"><span>最大</span></div>
 								</div>
 							</template>
 							<template class="rowTaskTemplate">
@@ -341,10 +336,10 @@
 									<div class="td single-line-text">
 										<div class="progress-bar progressBar tooltip">
 											<div class="progress-fill progressFill"></div>
-											<span class="progress-text name">Task</span>
+											<span class="progress-text name">任务</span>
 										</div>
 									</div>
-									<div class="td"><span class="level">Level</span></div>
+									<div class="td"><span class="level">等级</span></div>
 									<div class="td value">
 										<span class="effect single-line-text"></span>
 										<div class="income">
@@ -363,12 +358,12 @@
 									<div class="th rowtitle category single-line-text">
 										<button class="button-no-button" style="background-color:transparent;"
 											onclick="forceAutobuy()">
-											<span class="name">Item</span>
+											<span class="name">物品</span>
 										</button>
 									</div>
-									<div class="th rowtitle">On</div>
-									<div class="th rowtitle single-line-text">Effect</div>
-									<div class="th rowtitle">Expense</div>
+									<div class="th rowtitle">开</div>
+									<div class="th rowtitle single-line-text">效果</div>
+									<div class="th rowtitle">支出</div>
 								</div>
 							</template>
 							<template class="rowItemTemplate">
@@ -394,9 +389,9 @@
 							</template>
 							<template class="headerRowMilestoneTemplate">
 								<div class="tr">
-									<div class="th rowtitle"><span>Goal</span></div>
+									<div class="th rowtitle"><span>目标</span></div>
 									<div class="th rowtitle"><span class="category"></span></div>
-									<div class="th rowtitle"><span>Effect</span></div>
+									<div class="th rowtitle"><span>效果</span></div>
 								</div>
 							</template>
 							<template class="rowMilestoneTemplate">
@@ -406,7 +401,7 @@
 										<div class="progress-bar progressBar tooltip" style="width: 100%;">
 											<div class="progress-fill progressFill"
 												style="background-color: green;  padding: 0.4em 0em 0 0em;"></div>
-											<span class="progress-text name">Milestone</span>
+											<span class="progress-text name">里程碑</span>
 										</div>
 									</div>
 									<div class="td description" style="font-size: smaller; line-height: 1em;"></div>
@@ -415,11 +410,11 @@
 							<template class="requiredRowTemplate">
 								<div style="padding-left: 0.8em;padding-top: 0.2rem;" colspan=5>
 									<div class="effect">
-										<span class="w3-text-gray">Next:</span> <span class="effectValue"></span>
+										<span class="w3-text-gray">下一级：</span> <span class="effectValue"></span>
 									</div>
 									<div class="tooltip" style="width: 100%; margin-bottom: 0.8rem;">
 										<span class="w3-text-gray " style="cursor: help; position: relative;">
-											Required:
+											需求：
 										</span>
 										<div class="value" colspan=5 style="display:inline;">
 											<span class="levels color-income"></span>
@@ -469,71 +464,70 @@
 								<div id="evilperksTab1" class="tabEvilperks">
 									<div id="evilperksPage1" class="page panel page-column w3-padding">
 										<div>
-											<div class="color-evil">Evil perks</div>
-											<div>Evil perk points gain based on your <span id="eppInfo"></span>.</div>
-											<div>Evil perk points are reset on Embrace Evil.</div>
-											<div>Bought Evil perk ranks reduced on Embrace Evil by half.</div>
-											<div>Evil perk points slightly increase Time Warping.</div>
+											<div class="color-evil">邪恶特权</div>
+											<div>邪恶特权点获取基于你的 <span id="eppInfo"></span>。</div>
+											<div>拥抱邪恶时邪恶特权点会重置。</div>
+											<div>已购邪恶特权等级在拥抱邪恶时减半。</div>
+											<div>邪恶特权点略微提升时间扭曲。</div>
 											<div>
-												<p>Evil perk points: <span class="color-evil"
+												<p>邪恶特权点：<span class="color-evil"
 														id="evilperksDisplay"></span>
-													<br>Evil perk points gain: <span class="color-evil"
-														id="evilperksGainDisplay"></span> per year.
+													<br>邪恶特权点获取：<span class="color-evil"
+														id="evilperksGainDisplay"></span> /年。
 												</p>
 											</div>
 											<div id="evilperksLayout" style="padding-top:0em">
 												<div class="evilperkItem">
 													<button id="evilperk1" data-type="evil_perk" data-name="1"
 														class="perk evilperk tooltip" onclick="buyEvilPerk(1)">
-														<div>The Eye Age Requirement: <span id="eyeReq"
+														<div>眼睛年龄需求：<span id="eyeReq"
 																style="font-width: bold"
-																class="currency-bold epp-color"></span> years</div>
-														<div id="evilperkBuyDiv1">Buy to reduce it by 5 years</div>
-														<div id="evilperkCostDiv1">Cost: <span id="evilperkCost1"
+																class="currency-bold epp-color"></span> 年</div>
+														<div id="evilperkBuyDiv1">购买以减少 5 年</div>
+														<div id="evilperkCostDiv1">花费：<span id="evilperkCost1"
 																class="epp-color">1</span> EPP</div>
 													</button>
 												</div>
 												<div class="evilperkItem">
 													<button id="evilperk2" data-type="evil_perk" data-name="2"
 														class="perk evilperk tooltip" onclick="buyEvilPerk(2)">
-														<div>Evil Age Requirement: <span id="evilReq"
-																class="currency-bold epp-color"></span> years</div>
-														<div id="evilperkBuyDiv2">Buy to reduce it by 12.5 years</div>
-														<div id="evilperkCostDiv2">Cost: <span id="evilperkCost2"
+														<div>邪恶年龄需求：<span id="evilReq"
+																class="currency-bold epp-color"></span> 年</div>
+														<div id="evilperkBuyDiv2">购买以减少 12.5 年</div>
+														<div id="evilperkCostDiv2">花费：<span id="evilperkCost2"
 																class="epp-color">1</span> EPP</div>
 													</button>
 												</div>
 												<div class="evilperkItem">
 													<button id="evilperk3" data-type="evil_perk" data-name="3"
 														class="perk evilperk tooltip" onclick="buyEvilPerk(3)">
-														<div>The Void Age Requirement: <span id="voidManipulationReq"
-																class="currency-bold epp-color"></span> years</div>
-														<div id="evilperkBuyDiv3">Buy to reduce it by 100 years</div>
-														<div id="evilperkCostDiv3">Cost: <span id="evilperkCost3"
+														<div>虚空年龄需求：<span id="voidManipulationReq"
+																class="currency-bold epp-color"></span> 年</div>
+														<div id="evilperkBuyDiv3">购买以减少 100 年</div>
+														<div id="evilperkCostDiv3">花费：<span id="evilperkCost3"
 																class="epp-color">1</span> EPP</div>
 													</button>
 												</div>
 												<div class="evilperkItem">
 													<button id="evilperk4" data-type="evil_perk" data-name="4"
 														class="perk evilperk tooltip" onclick="buyEvilPerk(4)">
-														<div>Celestial Age Requirement: <span id="celestialReq"
-																class="currency-bold epp-color"></span> years</div>
-														<div id="evilperkBuyDiv4">Buy to reduce it by <span
-																id="celestialReduceYearsBy"></span> years</div>
-														<div id="evilperkCostDiv4">Cost: <span id="evilperkCost4"
+														<div>天界年龄需求：<span id="celestialReq"
+																class="currency-bold epp-color"></span> 年</div>
+														<div id="evilperkBuyDiv4">购买以减少 <span
+																id="celestialReduceYearsBy"></span> 年</div>
+														<div id="evilperkCostDiv4">花费：<span id="evilperkCost4"
 																class="epp-color">1</span> EPP</div>
 													</button>
 												</div>
 												<div class="evilperkItem">
 													<button id="evilperk5" data-type="evil_perk" data-name="5"
 														class="perk evilperk tooltip hidden" onclick="buyEvilPerk(5)">
-														<div id="evilperkBuyDiv5">Buy to receive <span
-																id="essenceRewardPercent"></span>% of your current
-															Essence</div>
-														<div>You will receive: <span id="essenceReward"
-																class="currency-bold color-essence"></span> essence
+														<div id="evilperkBuyDiv5">购买以获得你当前精华的 <span
+																id="essenceRewardPercent"></span>%</div>
+														<div>你将获得：<span id="essenceReward"
+																class="currency-bold color-essence"></span> 精华
 														</div>
-														<div id="evilperkCostDiv5">Cost: <span id="evilperkCost5"
+														<div id="evilperkCostDiv5">花费：<span id="evilperkCost5"
 																class="epp-color">1</span> EPP</div>
 													</button>
 												</div>
@@ -544,7 +538,7 @@
 													style="width: 1.6em; height: 1.6em;"
 													onclick="setEPSidebar(this.checked)">
 												<span style="padding: 0 1em;">
-													Show on sidebar
+													显示在侧边栏
 												</span>
 											</div>
 										</div>
@@ -559,174 +553,150 @@
 								<div id="challengeTab1" class="tabChallenge">
 									<div id="challengePage1" class="page panel page-column w3-padding">
 										<div>
-											<div class="color-evil">Starting a challenge will <b>reset</b> your coins,
-												levels and max levels.</div>
-											<div>The more you advance in the challenge, the higher the reward.</div>
-											<div>Challenge rewards are always active, even in challenges.</div>
+											<div class="color-evil">开始挑战会 <b>重置</b> 你的金币、等级和最大等级。</div>
+											<div>在挑战中推进得越远，奖励越高。</div>
+											<div>挑战奖励始终有效，即使在挑战中。</div>
 										</div>
 										<div id="anUnhappyLifeChallenge">
-											<div class="text-caption challenge-title challenge-header">1. An unhappy
-												life
-												<div id="currentChallengeReward1" class="hidden">Multiplies <span
-														class="color-happiness">Happiness</span> by x<span
+											<div class="text-caption challenge-title challenge-header">1. 不幸的人生
+												<div id="currentChallengeReward1" class="hidden">倍率 <span
+														class="color-happiness">幸福度</span> x<span
 														id="currentChallengeBuff1"></span></div>
 											</div>
 
-											<div style="color: gray; padding-bottom: 0.3em">Reduces happiness by ^0.5
+											<div style="color: gray; padding-bottom: 0.3em">幸福度降低 ^0.5
 											</div>
-											<div style="color: gold; padding-bottom: 0.3em">Goal: Reach <span
+											<div style="color: gold; padding-bottom: 0.3em">目标：达到 <span
 													id="challengeGoal1">992.2M</span> <span
-													class="color-happiness">Happiness</span></div>
-											<div id="challengeReward1" class="reward">Reward: Multiplies <span
-													class="color-happiness">Happiness</span> by x<span
+													class="color-happiness">幸福度</span></div>
+											<div id="challengeReward1" class="reward">奖励：倍率 <span
+													class="color-happiness">幸福度</span> x<span
 													id="challengeHappinessBuff">1</span></div>
 											<div id="challengeButton1"
 												style="padding-bottom: 0.3em; padding-top: 0.3em;">
 												<button class="w3-button button"
-													onclick="enterChallenge('an_unhappy_life')">Enter challenge</button>
-												<span style="padding: 0.3em;" class="color-evil"> Unlocks at 10k Evil
+													onclick="enterChallenge('an_unhappy_life')">进入挑战</button>
+												<span style="padding: 0.3em;" class="color-evil"> 10k 邪恶解锁
 												</span>
 											</div>
 											<button id="exitChallenge1" class="w3-button button hidden"
-												onclick="exitChallenge()">Exit challenge</button>
+												onclick="exitChallenge()">退出挑战</button>
 										</div>
 										<div id="theRichAndThePoorChallenge">
-											<div class="text-caption challenge-title challenge-header">2. The rich and
-												the poor
-												<div id="currentChallengeReward2" class="hidden">Multiplies <span
-														class="color-income">Income</span> by x<span
+											<div class="text-caption challenge-title challenge-header">2. 富人与穷人
+												<div id="currentChallengeReward2" class="hidden">倍率 <span
+														class="color-income">收入</span> x<span
 														id="currentChallengeBuff2"></span></div>
 											</div>
-											<div style="color: gray; padding-bottom: 0.3em">Reduces income by ^0.35
+											<div style="color: gray; padding-bottom: 0.3em">收入降低 ^0.35
 											</div>
 											<div style="color: gold; padding-bottom: 0.3em">
-												Goal: Reach <div id="challengeGoal2" class="coins"
+												目标：达到 <div id="challengeGoal2" class="coins"
 													style="display:inline">
 													<span></span>
 													<span></span>
 													<span></span>
 													<span></span>
-												</div> <span class="color-income">Income</span>
+												</div> <span class="color-income">收入</span>
 											</div>
-											<div id="challengeReward2" class="reward">Reward: Multiplies <span
-													class="color-income">Income</span> by x<span
+											<div id="challengeReward2" class="reward">奖励：倍率 <span
+													class="color-income">收入</span> x<span
 													id="challengeIncomeBuff">1</span></div>
 											<div id="challengeButton2"
 												style="padding-bottom: 0.3em; padding-top: 0.3em;">
 												<button class="w3-button button"
-													onclick="enterChallenge('rich_and_the_poor')">Enter
-													challenge</button>
-												<span style="padding: 0.3em;" class="color-evil"> Unlocks at 1M
-													Evil</span>
+													onclick="enterChallenge('rich_and_the_poor')">进入挑战</button>
+												<span style="padding: 0.3em;" class="color-evil"> 1M 邪恶解锁</span>
 											</div>
 											<button id="exitChallenge2" class="w3-button button hidden"
-												onclick="exitChallenge()">Exit challenge</button>
+												onclick="exitChallenge()">退出挑战</button>
 										</div>
 										<div id="timeDoesNotFlyChallenge">
-											<div class="text-caption challenge-title challenge-header">3. Time does not
-												fly
-												<div id="currentChallengeReward3" class="hidden">Multiplies <span
-														class="color-time-warping">Time Warping</span> by x<span
+											<div class="text-caption challenge-title challenge-header">3. 时间不飞逝
+												<div id="currentChallengeReward3" class="hidden">倍率 <span
+														class="color-time-warping">时间扭曲</span> x<span
 														id="currentChallengeBuff3"></span></div>
 											</div>
-											<div style="color: gray; padding-bottom: 0.3em">Reduces time warping by ^0.7
+											<div style="color: gray; padding-bottom: 0.3em">时间扭曲降低 ^0.7
 											</div>
-											<div style="color: gold; padding-bottom: 0.3em">Goal: Reach x<span
+											<div style="color: gold; padding-bottom: 0.3em">目标：达到 x<span
 													id="challengeGoal3">1.0M</span> <span
-													class="color-time-warping">Time Warping</span></div>
-											<div id="challengeReward3" class="reward">Reward: Multiplies <span
-													class="color-time-warping">Time Warping</span> by x<span
+													class="color-time-warping">时间扭曲</span></div>
+											<div id="challengeReward3" class="reward">奖励：倍率 <span
+													class="color-time-warping">时间扭曲</span> x<span
 													id="challengeTimewarpingBuff">1</span></div>
 											<div id="challengeButton3"
 												style="padding-bottom: 0.3em; padding-top: 0.3em;">
 												<button class="w3-button button"
-													onclick="enterChallenge('time_does_not_fly')">Enter
-													challenge</button>
-												<span style="padding: 0.3em;" class="color-essence"> Unlocks at 10k
-													Essence</span>
+													onclick="enterChallenge('time_does_not_fly')">进入挑战</button>
+												<span style="padding: 0.3em;" class="color-essence"> 10k 精华解锁</span>
 											</div>
 											<button id="exitChallenge3" class="w3-button button hidden"
-												onclick="exitChallenge()">Exit challenge</button>
+												onclick="exitChallenge()">退出挑战</button>
 										</div>
 										<div id="danceWithTheDevilChallenge">
-											<div class="text-caption challenge-title challenge-header">4. Dance with the
-												devil
-												<div id="currentChallengeReward4" class="hidden">Multiplies <span
-														class="color-essence">Essence</span> gain by x<span
+											<div class="text-caption challenge-title challenge-header">4. 与魔鬼共舞
+												<div id="currentChallengeReward4" class="hidden">倍率 <span
+														class="color-essence">精华</span> 获取 x<span
 														id="currentChallengeBuff4"></span></div>
 											</div>
-											<div style="color: gray; padding-bottom: 0.3em">Reduces Dark Magic and
-												Almightiness XP effect enormously, max level reduces XP gain and
-												happiness is reduced by ^0.075</div>
-											<div style="color: gold; padding-bottom: 0.3em">Goal: Reach <span
-													id="challengeGoal4">5.8k</span> <span class="color-evil">Evil</span>
-												gain</div>
-											<div id="challengeReward4" class="reward">Reward: Multiplies <span
-													class="color-essence">Essence</span> gain by x<span
+											<div style="color: gray; padding-bottom: 0.3em">大幅降低黑暗魔法和全能经验效果，最大等级降低经验获取，幸福度降低 ^0.075</div>
+											<div style="color: gold; padding-bottom: 0.3em">目标：达到 <span
+													id="challengeGoal4">5.8k</span> <span class="color-evil">邪恶</span>
+												获取</div>
+											<div id="challengeReward4" class="reward">奖励：倍率 <span
+													class="color-essence">精华</span> 获取 x<span
 													id="challengeEssenceGainBuff">1</span></div>
 											<div id="challengeButton4"
 												style="padding-bottom: 0.3em; padding-top: 0.3em;">
 												<button class="w3-button button"
-													onclick="enterChallenge('dance_with_the_devil')">Enter
-													challenge</button>
-												<span style="padding: 0.3em;" class="color-essence"> Unlocks at 1M
-													Essence</span>
+													onclick="enterChallenge('dance_with_the_devil')">进入挑战</button>
+												<span style="padding: 0.3em;" class="color-essence"> 1M 精华解锁</span>
 											</div>
 											<button id="exitChallenge4" class="w3-button button hidden"
-												onclick="exitChallenge()">Exit challenge</button>
+												onclick="exitChallenge()">退出挑战</button>
 										</div>
 										<div id="legendsNeverDieChallenge">
-											<div class="text-caption challenge-title challenge-header">5. Legends never
-												die
-												<div id="currentChallengeReward5" class="hidden">Multiplies <span
-														class="color-evil">Evil</span> gain by x<span
+											<div class="text-caption challenge-title challenge-header">5. 传奇永不灭
+												<div id="currentChallengeReward5" class="hidden">倍率 <span
+														class="color-evil">邪恶</span> 获取 x<span
 														id="currentChallengeBuff5"></span></div>
 											</div>
-											<div style="color: gray; padding-bottom: 0.3em">Reduces your lifespan by
-												^0.72, time warping by ^0.75, happiness does nothing and Dark Magic XP
-												effect is always 1x. <span id="challenge5MetaverseLifespanDebuff">The
-													infinite lifespan buff from Metaverse is disabled.</span></div>
-											<div style="color: gold; padding-bottom: 0.3em">Goal: Reach <span
-													id="challengeGoal5">Chairman lvl 1227</span></div>
-											<div id="challengeReward5" class="reward">Reward: Multiplies <span
-													class="color-evil">Evil</span> gain by x<span
+											<div style="color: gray; padding-bottom: 0.3em">寿命降低 ^0.72，时间扭曲降低 ^0.75，幸福度无效，黑暗魔法经验效果始终为 1x。<span id="challenge5MetaverseLifespanDebuff">元宇宙的无限寿命加成被禁用。</span></div>
+											<div style="color: gold; padding-bottom: 0.3em">目标：达到 <span
+													id="challengeGoal5">会长 等级 1227</span></div>
+											<div id="challengeReward5" class="reward">奖励：倍率 <span
+													class="color-evil">邪恶</span> 获取 x<span
 													id="challengeEvilGainBuff">1</span></div>
 											<div id="challengeButton5"
 												style="padding-bottom: 0.3em; padding-top: 0.3em;">
 												<button class="w3-button button"
-													onclick="enterChallenge('legends_never_die')">Enter
-													challenge</button>
-												<span style="padding: 0.3em;" class="color-essence"> Unlocks at 30M
-													Essence</span>
+													onclick="enterChallenge('legends_never_die')">进入挑战</button>
+												<span style="padding: 0.3em;" class="color-essence"> 30M 精华解锁</span>
 											</div>
 											<button id="exitChallenge5" class="w3-button button hidden"
-												onclick="exitChallenge()">Exit challenge</button>
+												onclick="exitChallenge()">退出挑战</button>
 										</div>
 										<div id="theDarkestTimeChallenge">
-											<div class="text-caption challenge-title challenge-header">6. The darkest
-												time
-												<div id="currentChallengeReward6" class="hidden">Multiplies <span
-														class="color-dark-matter">Dark Matter</span> gain by x<span
+											<div class="text-caption challenge-title challenge-header">6. 最黑暗的时刻
+												<div id="currentChallengeReward6" class="hidden">倍率 <span
+														class="color-dark-matter">暗物质</span> 获取 x<span
 														id="currentChallengeBuff6"></span></div>
 											</div>
-											<div style="color: gray; padding-bottom: 0.3em">All previous challenges
-												combined. Dark Matter items are disabled. First 4 Dark Matter abilities
-												grant all debuffs and no positive effects. Income is 0.</div>
-											<div style="color: gold; padding-bottom: 0.3em">Goal: Reach <span
-													id="challengeGoal6">Chairman lvl 1227</span></div>
-											<div id="challengeReward6" class="reward">Reward: Multiplies <span
-													class="color-dark-matter">Dark Matter</span> gain by x<span
+											<div style="color: gray; padding-bottom: 0.3em">所有先前挑战的组合。暗物质物品禁用。前 4 个暗物质能力只提供负面效果，没有正面效果。收入为 0。</div>
+											<div style="color: gold; padding-bottom: 0.3em">目标：达到 <span
+													id="challengeGoal6">会长 等级 1227</span></div>
+											<div id="challengeReward6" class="reward">奖励：倍率 <span
+													class="color-dark-matter">暗物质</span> 获取 x<span
 													id="challengeDarkMatterGainBuff">1</span></div>
 											<div id="challengeButton6"
 												style="padding-bottom: 0.3em; padding-top: 0.3em;">
 												<button class="w3-button button"
-													onclick="enterChallenge('the_darkest_time')">Enter
-													challenge</button>
-												<span style="padding: 0.3em;" class="color-essence"> Unlocks at 1e47
-													Essence</span>
+													onclick="enterChallenge('the_darkest_time')">进入挑战</button>
+												<span style="padding: 0.3em;" class="color-essence"> 1e47 精华解锁</span>
 											</div>
 											<button id="exitChallenge6" class="w3-button button hidden"
-												onclick="exitChallenge()">Exit challenge</button>
+												onclick="exitChallenge()">退出挑战</button>
 										</div>
 									</div>
 								</div>
@@ -750,124 +720,73 @@
 									<div id="rebirthPage" class="page panel page-column">
 										<ul>
 											<li id="rebirthNote0" class="hidden">
-												You stumble across a strange looking amulet on your <span
-													id="age0"></span>th birthday. It does not look like
-												it has any worth on the market given that it's made from cheap-looking
-												copper. However, you
-												feel a weird urge to keep the amulet, so you slip it into your pocket
-												for safekeeping.
+												在你 <span id="age0"></span> 岁生日那天，你偶然发现了一个看起来很奇怪的护符。它由廉价铜制成，在市场上毫无价值。然而，你却有一种奇怪的冲动想留着它，于是你把它塞进口袋妥善保管。
 											</li>
 											<li id="rebirthNote1" class="hidden">
-												On your <span id="age1"></span>th birthday, you feel the amulet shiver
-												uncontrollably in your pocket. You take it
-												out and the constant shivering suddenly stops. More to your bizarre
-												surprise, you notice
-												a strange etching on the centre of the amulet.
+												在你 <span id="age1"></span> 岁生日那天，你感觉到护符在口袋里不受控制地颤抖。你把它拿出来，持续不断的颤动突然停止了。更令你惊讶的是，你注意到护符中央有一处奇怪的蚀刻。
 											</li>
 											<li id="rebirthNote2" class="hidden">
 												<div style="margin-bottom: 0.4em">
-													On your <span id="age1a"></span>th birthday, you once again
-													encounter the strange, unexplained shivering from your
-													amulet. But this time, a living eyeball emerges from the centre.
-													Although terribly frightened,
-													you realise you do not have many years to live left anyway so you
-													consider touching the eye
-													to see what happens.
+													在你 <span id="age1a"></span> 岁生日那天，你再次遇到护符传来奇怪的、无法解释的颤抖。但这一次，一颗活生生的眼球从中央浮现出来。虽然极度恐惧，但你想反正自己也没几年可活了，于是考虑触碰眼睛看看会发生什么。
 												</div>
 												<i style="color: grey">
-													By touching the eyeball, you will be reborn and have to restart life
-													again, losing all your levels and coins.
-													However, you will gain <b>xp multipliers</b> for your heroes and
-													skills equivalent to: <b>1 + the max level of the hero or skill /
-														10.</b>
-													This means you will learn everything again much more quickly than
-													you did in your previous life. <span class="color-evil">
-														Something tells you that the amulet might evolve after living
-														for <b><span id="age2"></span></b>...
+													触碰眼球后，你将重生并不得不重新开始人生，失去所有等级和金币。然而，你将获得相当于：<b>1 + 英雄或技能的最大等级 / 10</b> 的<b>经验倍率</b>。这意味着你将比上一世更快地学会一切。<span class="color-evil">
+														有东西告诉你，在活了 <b><span id="age2"></span></b> 之后，护符可能会进化……
 													</span>
 												</i>
 												<br>
 												<button class="w3-button button"
 													style="margin-bottom: 0.4em; margin-top: 0.4em "
-													onClick="rebirthOne()">Touch the eye</button>
+													onClick="rebirthOne()">触碰眼睛</button>
 												<br>
 											</li>
 											<li id="rebirthNote3" class="hidden">
 												<div style="margin-bottom: 0.4em;">
-													Your gut instinct was right. The moment you hit the grand age of
-													<span id="age2a"></span>, you hear an ominous hum coming from the
-													amulet.
-													A mouth emerges from its surface and begins to cackle, and proceeds
-													to say: "So you've made it this far... Are you ready to embrace
-													evil?"
+													你的直觉没错。当你到达 <span id="age2a"></span> 岁高龄的那一刻，你听到护符传来不祥的嗡鸣声。一张嘴从表面浮现，开始咯咯地笑，接着说：“你竟然走到这一步了……准备好拥抱邪恶了吗？”
 													<br><span class="color-evil">
-														The amulet might transform even further after living for
-														<b><span id="age3"></span></b>.
+														在活了 <b><span id="age3"></span></b> 之后，护符可能会进一步变形。
 													</span>
 												</div>
 												<i class="color-evil">
-													If you decide to embrace evil, all of your levels, coins and even
-													max levels will be reset.
-													You will be reborn as a fresh slate. However, you will unlock a new
-													line of skills and gain
-													<b><span id="evilGainDisplay"></span> evil</b>, which will heavily
-													impact your future lives.
+													如果你决定拥抱邪恶，你的所有等级、金币甚至最大等级都会被重置。你将作为一张白纸重生。然而，你将解锁一条新的技能线，并获得
+													<b><span id="evilGainDisplay"></span> 邪恶</b>，这将严重影响你未来的生命。
 												</i>
 												<br>
 												<button class="w3-button button"
 													style="margin-bottom: 0.4em; margin-top: 0.4em "
-													onClick="rebirthTwo()">Embrace evil</button>
+													onClick="rebirthTwo()">拥抱邪恶</button>
 												<br>
 											</li>
 											<li id="rebirthNote4" class="hidden">
 												<div style="margin-bottom: 0.4em;">
-													A <span id="age3a"></span> years have come and gone and yet, you
-													still remain alive... somehow. You feel your amulet shivering again
-													and to your surprise, you see small tendrils
-													full of eyeballs emergin from it. As you are about to drop the
-													amulet, you hear frightening screech followed by whispers in your
-													head... <b>"You have to embrace the Void..."</b>
+													<span id="age3a"></span> 年过去了，而你……不知为何仍然活着。你感觉到护符再次颤抖，令你惊讶的是，你看到上面长出布满眼球的细小触须。就在你准备丢下护符时，你听到一声可怕的尖叫，随后脑海中响起低语…… <b>“你必须拥抱虚空……”</b>
 													<br>
 													<span class="color-evil">
-														The amulet will reach its final form after <b><span
-																id="age4"></span></b>!
+														护符将在 <b><span id="age4"></span></b> 之后达到最终形态！
 													</span>
 												</div>
 												<i style="color: rgb(204, 0, 255)">
-													You have unlocked <b>"The Void"</b> class category along with
-													<b>"Void Manipulation"</b> skills.
+													你已解锁 <b>“虚空”</b> 职业类别以及 <b>“虚空操纵”</b> 技能。
 												</i>
 											</li>
 											<li id="rebirthNote5" class="hidden">
 												<div style="margin-bottom: 0.4em;">
-													<span id="age4a"></span> have passed... most of them spent serving
-													the Void, yet there is still a glimpse of humanity inside of you.
-													All of the sudden your amulet starts to glow in the distance,
-													illuminating darkness around you with the brightness of a thousand
-													suns. With the very last remnant of your free will, you run to your
-													amulet and touch it... <b>
-														"You are now part of something bigger than yourself..."
+													<span id="age4a"></span> 已经过去……其中大部分时间都用于侍奉虚空，但你内心深处仍残存着一丝人性。突然，你的护符在远处开始发光，用一千个太阳的亮度照亮你周围的黑暗。凭借自由意志的最后一丝残余，你跑向护符并触碰了它…… <b>
+														“你现在已成为比你自身更伟大的事物的一部分……”
 													</b>
 												</div>
 												<i style="color: rgb(255, 204, 102)">
-													You have unlocked <b>"Galactic Council"</b> class category along
-													with <b>"Celestial Powers"</b> skills.
+													你已解锁 <b>“银河议会”</b> 职业类别以及 <b>“天界之力”</b> 技能。
 													<i style="color: grey">
 														<br>
-														If you decide to <b>transcend</b>, you will be reborn once
-														again, losing all your coins, <b>evil</b> and current levels.
-														However, your max levels won't be erased, but instead multiplied
-														with the effect from the <b>Cosmic Recollection</b> skill and
-														you will gain
+														如果你决定<b>超越</b>，你将再次重生，失去所有金币、<b>邪恶</b>和当前等级。然而，你的最大等级不会被抹除，而是会与<b>宇宙回忆</b>技能的效果相乘，你还会获得
 														<i class="color-essence">
-															<b><span id="essenceGainDisplay"></span> essence</b>,
+															<b><span id="essenceGainDisplay"></span> 精华</b>，
 														</i>
-														along with new skills that will boost you even further in your
-														journey.
+														以及新的技能，它们将在你的旅途中进一步提升你。
 														<br>
 														<i style="color: rgb(200, 0, 0)">
-															Transcend will only appear if you have the <b>Cosmic
-																Recollection</b> skill unlocked!
+															只有在你解锁<b>宇宙回忆</b>技能后，“超越”才会出现！
 														</i>
 													</i>
 													<br>
@@ -875,53 +794,44 @@
 												<div style="margin-bottom: 0.4em;" id="rebirthNote6" class="hidden">
 													<button class="w3-button button"
 														style="margin-bottom: 0.4em; margin-top: 0.4em"
-														onClick="rebirthThree()">Transcend</button>
+														onClick="rebirthThree()">超越</button>
 												</div>
 											</li>
 											<li id="rebirthNote7" class="hidden">
 												<i class="color-dark-matter">
-													You are starting to become way too powerful. The end of the universe
-													may be near...
+													你开始变得过于强大了。宇宙的终结可能即将来临……
 												</i>
 												<i style="color: grey">
 													<br>
-													If you decide to <b>collapse the universe</b>, all of your levels,
-													coins, max levels, evil, and <b>essence</b> will be reset. You will
-													be reborn as a fresh slate in a new universe, with no memory of
-													milestones and challenges from any of your past selves. In exchange,
-													you will unlock a third new line of skills and gain
+													如果你决定<b>坍缩宇宙</b>，你的所有等级、金币、最大等级、邪恶和<b>精华</b>都会被重置。你将作为一张白纸在新宇宙中重生，没有过去自我的任何里程碑和挑战记忆。作为交换，你将解锁第三条新技能线，并获得
 													<i class="color-dark-matter">
-														<b><span id="darkMatterGainDisplay"></span> Dark Matter</b>,
+														<b><span id="darkMatterGainDisplay"></span> 暗物质</b>，
 													</i>
-													which will boost you much further in your journey across the
-													multiverse.
+													这将在你穿越多元宇宙的旅途中大大提升你。
 												</i>
 												<br>
 												<button class="w3-button button"
 													style="margin-bottom: 0.4em; margin-top: 0.4em "
-													onClick="rebirthFour()">Collapse the universe</button>
+													onClick="rebirthFour()">坍缩宇宙</button>
 											</li>
 											<li id="rebirthNote8" class="hidden">
 												<i class="color-hypercubes">
-													You have discovered the Metaverse!
+													你发现了元宇宙！
 												</i>
 												<i style="color: grey">
 													<br>
-													When you go to the Metaverse, you will lose everything that you have
-													earned before. You will start from scratch, but over time you will
-													become far superior.
-													<span id="hypercubeCapText">Your hypercubes cap will be increased to
+													当你前往元宇宙时，你将失去之前获得的一切。你将从头开始，但随时间的推移你会变得远为强大。
+													<span id="hypercubeCapText">你的超立方体上限将提升至
 														<span class="color-hypercubes"
-															id="hypercubeCapDisplay"></span>.</span>
-													<span id="perkPointsGainText">You will gain <span
+															id="hypercubeCapDisplay"></span>。</span>
+													<span id="perkPointsGainText">你将获得 <span
 															class="color-perk-points"><span
-																id="perkPointsGainDisplay"></span> Metaverse perk
-															points</span>.</span>
+																id="perkPointsGainDisplay"></span> 元宇宙特权点</span>。</span>
 												</i>
 												<br>
 												<button class="w3-button button"
 													style="margin-bottom: 0.4em; margin-top: 0.4em "
-													onClick="rebirthFive()">Go to Metaverse</button>
+													onClick="rebirthFive()">前往元宇宙</button>
 											</li>
 										</ul>
 									</div>
@@ -931,44 +841,41 @@
 						<div class="tab column" style="display:none" id="darkMatter">
 							<div id="tabcolumnDarkMater" class="panel w3-margin-left" style="display: flex">
 								<div class="w3-button w3-bar-item tabButtonDarkMatter baritem w3-blue-gray"
-									id="shopTabTabButton" onClick="setTabDarkMatter('shopTab')" data-short="Shop">Shop
+									id="shopTabTabButton" onClick="setTabDarkMatter('shopTab')" data-short="Shop">商店
 								</div>
 								<div class="w3-button w3-bar-item tabButtonDarkMatter baritem"
 									id="skillTreeTabTabButton" onClick="setTabDarkMatter('skillTreeTab')"
-									data-short="Abilities">Abilities
+									data-short="Abilities">能力
 								</div>
 							</div>
 							<div id="maincolumnDarkMatter" class="panel w3-margin-left w3-margin-top">
 								<div id="shopTab" class="tabDarkMatter">
 									<div id="shopTabPage" class="page panel page-column w3-padding" style="width:50%;">
 										<div class="text-caption" style="padding-top:0em">
-											<div class="text-caption"><span class="color-dark-matter">Dark Matter:
+											<div class="text-caption"><span class="color-dark-matter">暗物质：
 												</span><span id="darkMatterShopDisplay"></span></div>
 										</div>
 										<div style="padding-top:2em">
-											<div class="text-caption dark-matter-title">Dark Orb Generator</div>
-											<div style="color:gray; padding-bottom:0.3em">Generates <b
-													id="darkOrbGenerator"></b> <span class="color-dark-orbs">Dark
-													Orb</span> per day</div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
-													id="darkOrbGeneratorCost"></b> <span class="color-dark-matter">Dark
-													Matter</span></div>
+											<div class="text-caption dark-matter-title">暗球生成器</div>
+											<div style="color:gray; padding-bottom:0.3em">每天生成 <b
+													id="darkOrbGenerator"></b> <span class="color-dark-orbs">暗球</span></div>
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
+													id="darkOrbGeneratorCost"></b> <span class="color-dark-matter">暗物质</span></div>
 											<button class="w3-button button" id="darkOrbGeneratorBuyButton"
-												onclick="buyDarkOrbGenerator()">Upgrade</button>
+												onclick="buyDarkOrbGenerator()">升级</button>
 										</div>
 										<div style="padding-top:2em">
-											<div class="text-caption dark-matter-title">A miracle</div>
-											<div style="color:gray; padding-bottom:0.3em">Keep <b>Magic Eye</b> when
-												performing a Dark Matter or lower reset</div>
-											<div id="aMiracleCost" style="color:gray; padding-bottom: 0.5em;">Cost:
-												<b>10</b> <span class="color-dark-matter">Dark Matter</span>
+											<div class="text-caption dark-matter-title">奇迹</div>
+											<div style="color:gray; padding-bottom:0.3em">在执行暗物质或更低重置时保留 <b>魔法之眼</b></div>
+											<div id="aMiracleCost" style="color:gray; padding-bottom: 0.5em;">花费：
+												<b>10</b> <span class="color-dark-matter">暗物质</span>
 											</div>
 											<button class="w3-button button" id="aMiracleBuyButton"
-												onclick="buyAMiracle()">Buy</button>
+												onclick="buyAMiracle()">购买</button>
 										</div>
 										<div id="darkOrbsProgress" class="text-caption tooltip" data-type="dark_orbs"
 											data-name="dark_orbs" style="width: 100%; padding-top:2em">
-											<div class="text-caption"><span class="color-dark-orbs">Dark Orbs:
+											<div class="text-caption"><span class="color-dark-orbs">暗球：
 												</span><span id="darkOrbsShopDisplay"></span></div>
 											<div class="req-progress-container" style="display: block;">
 												<div class="req-pending-bar color-dark-matter"></div>
@@ -977,51 +884,47 @@
 										</div>
 										<div style="padding-top:1em">
 											<button class="w3-button button" id="darkOrbsBuyAllButton"
-												onclick="buyAllDarkOrbsUpgrades()">Upgrade all</button>
+												onclick="buyAllDarkOrbsUpgrades()">全部升级</button>
 										</div>
 										<div style="padding-top:1em">
-											<div class="text-caption dark-matter-title">A deal with the Chairman</div>
-											<div style="color:gray; padding-bottom: 0.5em;">Reward: Multiply <span
-													style="color: rgb(199, 21, 133);">T.A.A & Magic</span> XP gain by
-												x<span id="aDealWithTheChairmanEffect"></span></div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
+											<div class="text-caption dark-matter-title">与会长交易</div>
+											<div style="color:gray; padding-bottom: 0.5em;">奖励：倍率 <span
+													style="color: rgb(199, 21, 133);">T.A.A 与魔法</span> 经验获取 x<span id="aDealWithTheChairmanEffect"></span></div>
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
 													id="aDealWithTheChairmanCost"></b> <span
-													class="color-dark-orbs">Dark Orbs</span></div>
+													class="color-dark-orbs">暗球</span></div>
 											<button class="w3-button button" id="aDealWithTheChairmanBuyButton"
-												onclick="buyADealWithTheChairman()">Upgrade</button>
+												onclick="buyADealWithTheChairman()">升级</button>
 										</div>
 										<div style="padding-top:2em">
-											<div class="text-caption dark-matter-title">A gift from God</div>
-											<div style="color:gray; padding-bottom: 0.5em;">Reward: Multiply <span
-													class="color-essence">Essence</span> gain by x<span
+											<div class="text-caption dark-matter-title">神的礼物</div>
+											<div style="color:gray; padding-bottom: 0.5em;">奖励：倍率 <span
+													class="color-essence">精华</span> 获取 x<span
 													id="aGiftFromGodEffect"></span></div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
-													id="aGiftFromGodCost"></b> <span class="color-dark-orbs">Dark
-													Orbs</span></div>
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
+													id="aGiftFromGodCost"></b> <span class="color-dark-orbs">暗球</span></div>
 											<button class="w3-button button" id="aGiftFromGodBuyButton"
-												onclick="buyAGiftFromGod()">Upgrade</button>
+												onclick="buyAGiftFromGod()">升级</button>
 										</div>
 										<div style="padding-top:2em">
-											<div class="text-caption dark-matter-title">Gotta be fast</div>
-											<div style="color:gray; padding-bottom: 0.5em;">Reward: Multiply <span
-													class="color-time-warping">Time Warping</span> by x<span
+											<div class="text-caption dark-matter-title">必须快</div>
+											<div style="color:gray; padding-bottom: 0.5em;">奖励：倍率 <span
+													class="color-time-warping">时间扭曲</span> x<span
 													id="gottaBeFastEffect"></span></div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
-													id="gottaBeFastCost"></b> <span class="color-dark-orbs">Dark
-													Orbs</span></div>
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
+													id="gottaBeFastCost"></b> <span class="color-dark-orbs">暗球</span></div>
 											<button class="w3-button button" id="gottaBeFastBuyButton"
-												onclick="buyGottaBeFast()">Upgrade</button>
+												onclick="buyGottaBeFast()">升级</button>
 										</div>
 										<div style="padding-top:2em">
-											<div class="text-caption dark-matter-title">Life coach</div>
-											<div style="color:gray; padding-bottom: 0.5em;">Reward: Multiply <span
-													class="color-income">Income</span> by x<span
+											<div class="text-caption dark-matter-title">人生教练</div>
+											<div style="color:gray; padding-bottom: 0.5em;">奖励：倍率 <span
+													class="color-income">收入</span> x<span
 													id="lifeCoachEffect"></span></div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
-													id="lifeCoachCost"></b> <span class="color-dark-orbs">Dark
-													Orbs</span></div>
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
+													id="lifeCoachCost"></b> <span class="color-dark-orbs">暗球</span></div>
 											<button class="w3-button button" id="lifeCoachBuyButton"
-												onclick="buyLifeCoach()">Upgrade</button>
+												onclick="buyLifeCoach()">升级</button>
 										</div>
 									</div>
 								</div>
@@ -1030,148 +933,146 @@
 										<div id="skillTreePageDarkMaterDisplay" class="text-caption"
 											style="padding-top:0em">
 											<div class="text-caption"><span class="color-dark-matter"
-													id="skillTreePageDarkMaterTitle">Dark Matter: </span><span
+													id="skillTreePageDarkMaterTitle">暗物质： </span><span
 													id="darkMatterSkillsDisplay"></span></div>
 										</div>
 										<div style="padding-top:2em">
 											<div style="color:gray; padding-bottom:0.3em">
-												You can only choose 1 upgrade in each category; pick wisely. You can
-												reset the abilities, but you will <b>NOT</b> get your <span
-													class="color-dark-matter">Dark Matter</span> back!
+												每个类别只能选择一个升级；请谨慎选择。你可以重置能力，但你<b>不会</b>拿回你的 <span
+													class="color-dark-matter">暗物质</span>！
 											</div>
-											<button class="w3-button button" onclick="resetSkillTree()">Reset
-												Abilities</button>
+											<button class="w3-button button" onclick="resetSkillTree()">重置能力</button>
 										</div>
 										<div style="padding-top:2em">
-											<div class="text-caption dark-matter-title">Speed is life</div>
+											<div class="text-caption dark-matter-title">速度即生命</div>
 											<div style="color:gray; padding-bottom:0.3em">
 												<button id="speedIsLife1" class="w3-button button"
-													onclick="buySpeedOfLife(1)">Buy</button> -
-												Multiply <span class="color-time-warping">Time Warping</span> by
-												<b>3x</b><span class="negative-effect">
-													,
-													but divide <span class="color-evil">Evil</span> gain by <b>2x</b>
+													onclick="buySpeedOfLife(1)">购买</button> -
+												倍率 <span class="color-time-warping">时间扭曲</span> x
+												<b>3</b><span class="negative-effect">
+													，
+													但除以 <span class="color-evil">邪恶</span> 获取 <b>2</b>
 												</span>
 											</div>
-											<div class="darkMatterSkillOR" style="padding: 0.6em">OR</div>
+											<div class="darkMatterSkillOR" style="padding: 0.6em">或</div>
 											<div style="color:gray; padding-bottom:0.3em">
 												<button id="speedIsLife2" class="w3-button button"
-													onclick="buySpeedOfLife(2)">Buy</button> -
-												Multiply <span class="color-time-warping">Time Warping</span> by
-												<b>7x</b><span class="negative-effect">
-													,
-													but divide <span class="color-essence">Essence</span> gain by
-													<b>2x</b>
+													onclick="buySpeedOfLife(2)">购买</button> -
+												倍率 <span class="color-time-warping">时间扭曲</span> x
+												<b>7</b><span class="negative-effect">
+													，
+													但除以 <span class="color-essence">精华</span> 获取
+													<b>2</b>
 												</span>
 											</div>
-											<div id="speedIsLifeCost" style="color:gray; padding-bottom: 0.5em;">Cost:
+											<div id="speedIsLifeCost" style="color:gray; padding-bottom: 0.5em;">花费：
 												<b><span id="darkMatterSkillCost1"></span></b> <span
-													class="color-dark-matter">Dark Matter</span>
+													class="color-dark-matter">暗物质</span>
 											</div>
 										</div>
 										<div style="padding-top:2em">
-											<div class="text-caption dark-matter-title">Your greatest debt</div>
+											<div class="text-caption dark-matter-title">你最大的债务</div>
 											<div style="color:gray; padding-bottom:0.3em">
 												<button id="yourGreatestDebt1" class="w3-button button"
-													onclick="buyYourGreatestDebt(1)">Buy</button> -
-												Multiply <span style="color:rgb(255, 204, 102)">all XP</span> gain by
-												<b>500x</b><span class="negative-effect">
-													,
-													but divide <span class="color-income">Income</span> by <b>10x</b>
+													onclick="buyYourGreatestDebt(1)">购买</button> -
+												倍率 <span style="color:rgb(255, 204, 102)">所有经验</span> 获取 x
+												<b>500</b><span class="negative-effect">
+													，
+													但除以 <span class="color-income">收入</span> <b>10</b>
 												</span>
 											</div>
-											<div class="darkMatterSkillOR" style="padding: 0.6em">OR</div>
+											<div class="darkMatterSkillOR" style="padding: 0.6em">或</div>
 											<div style="color:gray; padding-bottom:0.3em">
 												<button id="yourGreatestDebt2" class="w3-button button"
-													onclick="buyYourGreatestDebt(2)">Buy</button> -
-												Multiply <span class="color-evil">Evil gain</span> by <b>100x</b><span
+													onclick="buyYourGreatestDebt(2)">购买</button> -
+												倍率 <span class="color-evil">邪恶获取</span> x <b>100</b><span
 													class="negative-effect">
-													,
-													but divide <span class="color-income">Income</span> by <b>2x</b>
+													，
+													但除以 <span class="color-income">收入</span> <b>2</b>
 												</span>
 											</div>
 											<div id="yourGreatestDebtCost" style="color:gray; padding-bottom: 0.5em;">
-												Cost: <b><span id="darkMatterSkillCost2"></span></b> <span
-													class="color-dark-matter">Dark Matter</span></div>
+												花费：<b><span id="darkMatterSkillCost2"></span></b> <span
+													class="color-dark-matter">暗物质</span></div>
 										</div>
 										<div style="padding-top:2em">
-											<div class="text-caption dark-matter-title">Essence collector</div>
+											<div class="text-caption dark-matter-title">精华收集者</div>
 											<div style="color:gray; padding-bottom:0.3em">
 												<button id="essenceCollector1" class="w3-button button"
-													onclick="buyEssenceCollector(1)">Buy</button> -
-												Multiply <span class="color-essence">Essence</span> gain by
-												<b>500x</b><span class="negative-effect">
-													,
-													but divide <span class="color-evil">Evil</span> gain by <b>2x</b>
+													onclick="buyEssenceCollector(1)">购买</button> -
+												倍率 <span class="color-essence">精华</span> 获取 x
+												<b>500</b><span class="negative-effect">
+													，
+													但除以 <span class="color-evil">邪恶</span> 获取 <b>2</b>
 												</span>
 											</div>
-											<div class="darkMatterSkillOR" style="padding: 0.6em">OR</div>
+											<div class="darkMatterSkillOR" style="padding: 0.6em">或</div>
 											<div style="color:gray; padding-bottom:0.3em">
 												<button id="essenceCollector2" class="w3-button button"
-													onclick="buyEssenceCollector(2)">Buy</button> -
-												Multiply <span class="color-essence">Essence</span> gain by
-												<b>1000x</b><span class="negative-effect">
-													,
-													but divide <span class="color-income">Income</span> by <b>25x</b>
+													onclick="buyEssenceCollector(2)">购买</button> -
+												倍率 <span class="color-essence">精华</span> 获取 x
+												<b>1000</b><span class="negative-effect">
+													，
+													但除以 <span class="color-income">收入</span> <b>25</b>
 												</span>
 											</div>
 											<div id="essenceCollectorCost" style="color:gray; padding-bottom: 0.5em;">
-												Cost: <b><span id="darkMatterSkillCost3"></span></b> <span
-													class="color-dark-matter">Dark Matter</span></div>
+												花费：<b><span id="darkMatterSkillCost3"></span></b> <span
+													class="color-dark-matter">暗物质</span></div>
 										</div>
 										<div style="padding-top:2em">
-											<div class="text-caption dark-matter-title">Explosion of the universe</div>
+											<div class="text-caption dark-matter-title">宇宙爆炸</div>
 											<div style="color:gray; padding-bottom:0.3em">
 												<button id="explosionOfTheUniverse1" class="w3-button button"
-													onclick="buyExplosionOfTheUniverse(1)">Buy</button> -
-												Multiply <span style="color:rgb(255, 204, 102)">all XP</span> gain by
-												<b>1e100x</b><span class="negative-effect">
-													,
-													but divide <span class="color-essence">Essence</span> gain by
-													<b>2x</b>
+													onclick="buyExplosionOfTheUniverse(1)">购买</button> -
+												倍率 <span style="color:rgb(255, 204, 102)">所有经验</span> 获取 x
+												<b>1e100</b><span class="negative-effect">
+													，
+													但除以 <span class="color-essence">精华</span> 获取
+													<b>2</b>
 												</span>
 											</div>
-											<div class="darkMatterSkillOR" style="padding: 0.6em">OR</div>
+											<div class="darkMatterSkillOR" style="padding: 0.6em">或</div>
 											<div style="color:gray; padding-bottom:0.3em">
 												<button id="explosionOfTheUniverse2" class="w3-button button"
-													onclick="buyExplosionOfTheUniverse(2)">Buy</button> -
-												Multiply <span style="color:rgb(255, 204, 102)">all XP</span> gain by
-												<b>1e150x</b><span class="negative-effect">
-													,
-													but divide <span class="color-income">Income</span> by <b>1e5x</b>
+													onclick="buyExplosionOfTheUniverse(2)">购买</button> -
+												倍率 <span style="color:rgb(255, 204, 102)">所有经验</span> 获取 x
+												<b>1e150</b><span class="negative-effect">
+													，
+													但除以 <span class="color-income">收入</span> <b>1e5</b>
 												</span>
 											</div>
 											<div id="explosionOfTheUniverseCost"
-												style="color:gray; padding-bottom: 0.5em;">Cost: <b><span
+												style="color:gray; padding-bottom: 0.5em;">花费：<b><span
 														id="darkMatterSkillCost4"></span></b> <span
-													class="color-dark-matter">Dark Matter</span></div>
+													class="color-dark-matter">暗物质</span></div>
 										</div>
 										<div style="padding-top:2em">
-											<div class="text-caption dark-matter-title">Multiverse explorer</div>
+											<div class="text-caption dark-matter-title">多元宇宙探索者</div>
 											<div style="color:gray; padding-bottom:0.3em">
 												<button id="multiverseExplorer1" class="w3-button button"
-													onclick="buyMultiverseExplorer(1)">Buy</button> -
-												Multiply <span class="color-essence">Essence</span> gain by
-												<b>5000x</b><span class="negative-effect">
-													,
-													but divide <span class="color-time-warping">Time Warping</span> by
-													<b>1000x</b>
+													onclick="buyMultiverseExplorer(1)">购买</button> -
+												倍率 <span class="color-essence">精华</span> 获取 x
+												<b>5000</b><span class="negative-effect">
+													，
+													但除以 <span class="color-time-warping">时间扭曲</span> x
+													<b>1000</b>
 												</span>
 											</div>
-											<div class="darkMatterSkillOR" style="padding: 0.6em">OR</div>
+											<div class="darkMatterSkillOR" style="padding: 0.6em">或</div>
 											<div style="color:gray; padding-bottom:0.3em">
 												<button id="multiverseExplorer2" class="w3-button button"
-													onclick="buyMultiverseExplorer(2)">Buy</button> -
-												Multiply <span class="color-essence">Essence</span> gain by
-												<b>10000x</b><span class="negative-effect">
-													,
-													but divide <span class="color-dark-matter">Dark Matter</span> gain
-													by <b>100x</b>
+													onclick="buyMultiverseExplorer(2)">购买</button> -
+												倍率 <span class="color-essence">精华</span> 获取 x
+												<b>10000</b><span class="negative-effect">
+													，
+													但除以 <span class="color-dark-matter">暗物质</span> 获取
+													<b>100</b>
 												</span>
 											</div>
 											<div id="multiverseExplorerCost" style="color:gray; padding-bottom: 0.5em;">
-												Cost: <b><span id="darkMatterSkillCost5"></span></b> <span
-													class="color-dark-matter">Dark Matter</span></div>
+												花费：<b><span id="darkMatterSkillCost5"></span></b> <span
+													class="color-dark-matter">暗物质</span></div>
 										</div>
 									</div>
 								</div>
@@ -1181,136 +1082,129 @@
 							<div id="tabcolumnMetaverse" class="panel w3-margin-left" style="display: flex">
 								<div class="w3-button w3-bar-item tabButtonMetaverse baritem w3-blue-gray"
 									id="metaverseTab1TabButton" onClick="setTabMetaverse('metaverseTab1')"
-									data-short="Altar">Altar</div>
+									data-short="Altar">祭坛</div>
 								<div class="w3-button w3-bar-item tabButtonMetaverse baritem"
 									id="metaverseTab2TabButton" onClick="setTabMetaverse('metaverseTab2')"
-									data-short="Perks">Perks</div>
+									data-short="Perks">特权</div>
 							</div>
 							<div id="maincolumnMetaverse" class="panel w3-margin-left w3-margin-top">
 								<div id="metaverseTab1" class="tabMetaverse">
 									<div id="metaversePage1" class="page panel page-column w3-padding">
 										<div class="text-caption" style="padding-top:0em">
-											<div class="text-caption"><span class="color-essence"><b>Welcome to
-														Metaverse!</b></span></div>
+											<div class="text-caption"><span class="color-essence"><b>欢迎来到元宇宙！</b></span></div>
 										</div>
 										<div style="padding-top:1em">
-											<div class="text-caption">Lifespan is now infinite.</div>
-											<div class="text-caption">The more hypercubes you have, the more sacrifice
-												opportunities will open up.</div>
+											<div class="text-caption">寿命现在无限。</div>
+											<div class="text-caption">超立方体越多，解锁的献祭机会越多。</div>
 										</div>
 										<div style="border-bottom: 0.1em solid rgb(24, 210, 217); padding-top: 2em;">
 										</div>
 										<div style="padding-top:1em">
-											<div class="text-caption"><span class="color-hypercubes">Hypercubes:</span>
+											<div class="text-caption"><span class="color-hypercubes">超立方体：</span>
 												<span id="hypercubesMetaDisplay"></span>
 											</div>
-											<div id="currentHypercubesCap" style="color:red">Current hypercubes cap:
+											<div id="currentHypercubesCap" style="color:red">当前超立方体上限：
 												<span id="currentHypercubesCapValue"></span>
 											</div>
 											<div id="timeTillNextHypercubePower1" style="color:gray;"></div>
 											<div id="timeTillNextHypercubePower2" style="color:gray;"></div>
 											<div id="timeTillNextHypercubePower3" style="color:gray;"></div>
-											<div style="color:gray;"><span>Total hypercube gain bonus:</span> <span
+											<div style="color:gray;"><span>总超立方体获取加成：</span> <span
 													id="hypercubesBonusMetaDisplay"></span></div>
 										</div>
 										<div style="padding-top:1em">
 											<button id="boostMetaButton" class="perk perk-boost" onclick="applyBoost()">
-												Boost </button>
+												增幅 </button>
 											<span id="boostCooldownMetaDisplay">00:00</span>
 										</div>
 										<div id="IncreaseHypercubeGainAltar" style="padding-top:2em">
-											<div class="text-caption metaverse-title">Increase Hypercube Gain</div>
-											<div style="color:gray; padding-bottom: 0.3em;">Current gain: <b
-													id="hypercubeGain"></b> / s</div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
+											<div class="text-caption metaverse-title">提升超立方体获取</div>
+											<div style="color:gray; padding-bottom: 0.3em;">当前获取：<b
+													id="hypercubeGain"></b> /秒</div>
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
 													id="hypercubeGainCost"></b> <span
-													class="color-hypercubes">Hypercubes</span></div>
+													class="color-hypercubes">超立方体</span></div>
 											<button class="w3-button button" id="hypercubeGainBuyButton"
-												onclick="buyHypercubeGain()">Sacrifice</button>
+												onclick="buyHypercubeGain()">献祭</button>
 										</div>
 										<div id="ReduceBoostCooldownAltar" style="padding-top:2em">
-											<div class="text-caption metaverse-title">Reduce Boost Cooldown</div>
-											<div style="color:gray; padding-bottom: 0.3em;">Current cooldown: <b
+											<div class="text-caption metaverse-title">减少增幅冷却</div>
+											<div style="color:gray; padding-bottom: 0.3em;">当前冷却：<b
 													id="reduceBoostCooldown"></b></div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
 													id="reduceBoostCooldownCost"></b> <span
-													class="color-hypercubes">Hypercubes</span></div>
+													class="color-hypercubes">超立方体</span></div>
 											<button class="w3-button button" id="reduceBoostCooldownBuyButton"
-												onclick="buyReduceBoostCooldown()">Sacrifice</button>
+												onclick="buyReduceBoostCooldown()">献祭</button>
 										</div>
 										<div id="IncreaseBoostDurationAltar" style="padding-top:2em">
-											<div class="text-caption metaverse-title">Increase Boost Duration</div>
-											<div style="color:gray; padding-bottom: 0.3em;">Current duration: <b
+											<div class="text-caption metaverse-title">提升增幅持续时间</div>
+											<div style="color:gray; padding-bottom: 0.3em;">当前持续时间：<b
 													id="boostDuration"></b></div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
 													id="boostDurationCost"></b> <span
-													class="color-hypercubes">Hypercubes</span></div>
+													class="color-hypercubes">超立方体</span></div>
 											<button class="w3-button button" id="boostDurationBuyButton"
-												onclick="buyBoostDuration()">Sacrifice</button>
+												onclick="buyBoostDuration()">献祭</button>
 										</div>
 										<div id="EvilAltar" style="padding-top:2em">
-											<div class="text-caption metaverse-title">Gain evil at new transcension
+											<div class="text-caption metaverse-title">新超越时获得邪恶
 											</div>
-											<div style="color:gray; padding-bottom: 0.3em;">Current gain: <b
-													id="evilTranGain"></b> <span class="color-evil">Evil</span></div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
+											<div style="color:gray; padding-bottom: 0.3em;">当前获取：<b
+													id="evilTranGain"></b> <span class="color-evil">邪恶</span></div>
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
 													id="evilTranCost"></b> <span
-													class="color-hypercubes">Hypercubes</span></div>
+													class="color-hypercubes">超立方体</span></div>
 											<button class="w3-button button" id="evilTranBuyButton"
-												onclick="buyEvilTran()">Sacrifice</button>
+												onclick="buyEvilTran()">献祭</button>
 										</div>
 										<div id="EssenceAltar" style="padding-top:2em">
-											<div class="text-caption metaverse-title">Essence gain multiplier</div>
-											<div style="color:gray; padding-bottom: 0.3em;">Current multiplier: x<b
-													id="essenceMultGain"></b> <span class="color-essence">Essence</span>
+											<div class="text-caption metaverse-title">精华获取倍率</div>
+											<div style="color:gray; padding-bottom: 0.3em;">当前倍率：x<b
+													id="essenceMultGain"></b> <span class="color-essence">精华</span>
 											</div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
 													id="essenceMultCost"></b> <span
-													class="color-hypercubes">Hypercubes</span></div>
+													class="color-hypercubes">超立方体</span></div>
 											<button class="w3-button button" id="essenceMultButton"
-												onclick="buyEssenceMult()">Sacrifice</button>
+												onclick="buyEssenceMult()">献祭</button>
 										</div>
 										<div id="ChallengeAltar" style="padding-top:2em">
-											<div class="text-caption metaverse-title">Challenges are not reset on
-												collapse</div>
+											<div class="text-caption metaverse-title">坍缩时不重置挑战</div>
 											<div style="color:gray; padding-bottom: 0.3em;"><span
 													style="color: rgb(10, 238, 43)"><b
 														id="challengeAltarState"></b></span></div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
 													id="challengeAltarCost"></b> <span
-													class="color-hypercubes">Hypercubes</span></div>
+													class="color-hypercubes">超立方体</span></div>
 											<button class="w3-button button" id="challengeAltarButton"
-												onclick="buyChallengeAltar()">Sacrifice</button>
+												onclick="buyChallengeAltar()">献祭</button>
 										</div>
 										<div id="DarkMaterAltar" style="padding-top:2em">
-											<div class="text-caption metaverse-title">Dark Matter gain multiplier</div>
-											<div style="color:gray; padding-bottom: 0.3em;">Current multiplier: x<b
-													id="darkMatterMultGain"></b> <span class="color-dark-matter">Dark
-													Matter</span></div>
-											<div style="color:gray; padding-bottom: 0.5em;">Cost: <b
+											<div class="text-caption metaverse-title">暗物质获取倍率</div>
+											<div style="color:gray; padding-bottom: 0.3em;">当前倍率：x<b
+													id="darkMatterMultGain"></b> <span class="color-dark-matter">暗物质</span></div>
+											<div style="color:gray; padding-bottom: 0.5em;">花费：<b
 													id="darkMatterMultCost"></b> <span
-													class="color-hypercubes">Hypercubes</span></div>
+													class="color-hypercubes">超立方体</span></div>
 											<button class="w3-button button" id="darkMaterMultButton"
-												onclick="buyDarkMaterMult()">Sacrifice</button>
+												onclick="buyDarkMaterMult()">献祭</button>
 										</div>
 									</div>
 								</div>
 								<div id="metaverseTab2" class="tabMetaverse">
 									<div id="metaversePage2" class="page panel page-column w3-padding">
 										<div class="text-caption" style="padding-top:0em; padding-left:1em;">
-											<div class="text-caption"><span class="color-perk-points"><b>Metaverse
-														Perks</b></span></div>
+											<div class="text-caption"><span class="color-perk-points"><b>元宇宙特权</b></span></div>
 										</div>
 										<div style="padding-top:1em">
-											<div class="text-caption" style="padding-left: 1em;">You have <b><span
+											<div class="text-caption" style="padding-left: 1em;">你有 <b><span
 														id="perkPointDisplay" class="color-perk-points"></span></b>
-												unspent Metaverse perk points. Total points: <b><span
+												个未使用元宇宙特权点。总点数：<b><span
 														id="totalPerkPointDisplay"
-														class="color-perk-points"></span></b>.</div>
-											<div id="mppInfo" class="text-caption" style="padding-left: 1em;">You can
-												freely activate and deactivate perks for the points you have.</div>
-											<div id="mppInfo2" class="text-caption" style="padding-left: 1em;">Bonus to
-												Dark Matter gain is x<span id="mppDMBuff"></span>.</div>
+														class="color-perk-points"></span></b>。</div>
+											<div id="mppInfo" class="text-caption" style="padding-left: 1em;">你可以用拥有的点数自由激活和停用特权。</div>
+											<div id="mppInfo2" class="text-caption" style="padding-left: 1em;">暗物质获取加成为 x<span id="mppDMBuff"></span>。</div>
 										</div>
 										<div style="border-bottom: 0.1em solid rgb(217, 24, 119); padding-top: 2em;">
 										</div>
@@ -1318,7 +1212,7 @@
 											<template class="perkItem">
 												<button class="perk metaperk tooltip">
 													<div class="perkName"></div>
-													<div style="font-size: smaller;">Cost: <span
+													<div style="font-size: smaller;">花费：<span
 															class="perkCost">1</span> MPP</div>
 												</button>
 											</template>
@@ -1327,16 +1221,16 @@
 										</div>
 										<div id="perkTools" class="perk-grid" style="padding-top:0em">
 											<button class="perk metaperk perk-tool" onclick="collectPerkPoints(0)">
-												<div>Assign unspent perk points</div>
+												<div>分配未使用特权点</div>
 											</button>
 											<button class="perk metaperk perk-tool" onclick="collectPerkPoints(1)">
-												<div>Collect all perk points</div>
+												<div>收集所有特权点</div>
 											</button>
 										</div>
 										<div id="Congratulations" class="congrats no-select hidden"
 											onclick="gameData.p5=false">
-											<div>Congratulations!</div>
-											<div>You have beaten the game!</div>
+											<div>恭喜！</div>
+											<div>你已通关！</div>
 										</div>
 									</div>
 								</div>
@@ -1346,11 +1240,11 @@
 							<div id="tabcolumnSettings" class="panel w3-padding page-column">
 								<div class="w3-button w3-bar-item tabButtonSettings baritem w3-blue-gray"
 									id="settingsTabTabButton" onClick="setTabSettings('settingsTab')"
-									data-short="Settings">Settings</div>
+									data-short="Settings">设置</div>
 								<div class="w3-button w3-bar-item tabButtonSettings baritem" id="statsTabTabButton"
-									onClick="setTabSettings('statsTab')" data-short="Stats">Stats</div>
+									onClick="setTabSettings('statsTab')" data-short="Stats">统计</div>
 								<div class="w3-button w3-bar-item tabButtonSettings baritem" id="changelogTabTabButton"
-									onClick="setTabSettings('changelogTab')" data-short="Changelog">Changelog</div>
+									onClick="setTabSettings('changelogTab')" data-short="Changelog">更新日志</div>
 							</div>
 							<div id="maincolumnSettings" class="panel w3-margin-left w3-margin-top">
 
@@ -1359,26 +1253,22 @@
 
 										<div class="panel w3-padding" style="margin-bottom: 1em; ">
 											<div class="text-caption"
-												style="font-weight: bold; color: #24d2d9; margin-bottom: 0.8em;">Save
-												Management</div>
+												style="font-weight: bold; color: #24d2d9; margin-bottom: 0.8em;">存档管理</div>
 
 											<form style="margin-bottom: 0.8em" autocomplete="off">
-												<input id="importExportBox" placeholder="Enter save string here..."
+												<input id="importExportBox" placeholder="在此粘贴存档字符串..."
 													type="text"
 													style="width: 100%; background: #111; color: #fff; border: 1px solid #444; padding: 6px; font-family: monospace; font-size: xi-small;">
 											</form>
 
 											<div style="display: flex; flex-wrap: wrap; gap: 0.5em;">
-												<button class="w3-button button" onClick="importGameData()">Import
-													Save</button>
+												<button class="w3-button button" onClick="importGameData()">导入存档</button>
 												<button class="w3-button button" onClick="exportGameData()"
-													onmouseout="outExportButton()">Export Save</button>
-												<button class="w3-button button" onClick="importGameDataFromFile()">Load
-													from File</button>
-												<button class="w3-button button" onClick="exportGameDataToFile()">Save
-													to File</button>
+													onmouseout="outExportButton()">导出存档</button>
+												<button class="w3-button button" onClick="importGameDataFromFile()">从文件加载</button>
+												<button class="w3-button button" onClick="exportGameDataToFile()">保存到文件</button>
 												<button class="w3-button button w3-red" onClick="resetGameData()"
-													style="margin-left: auto;">Hard Reset Game</button>
+													style="margin-left: auto;">硬重置游戏</button>
 												<span class="tooltiptext" id="exportTooltip"></span>
 											</div>
 										</div>
@@ -1386,11 +1276,11 @@
 										<div class="panel w3-padding"
 											style="margin-bottom: 1em; display: flex; flex-direction: column; gap: 0.8em;">
 											<div class="text-caption" style="font-weight: bold; color: #24d2d9;">
-												Interface Settings</div>
+												界面设置</div>
 
 											<div
 												style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.4em;">
-												<span style="color: #aaa;">Sticky Sidebar</span>
+												<span style="color: #aaa;">固定侧边栏</span>
 												<input id="settingsStickySidebar" type="checkbox"
 													style="width:1.5em; height:1.5em; cursor: pointer;"
 													onclick="setStickySidebar(this.checked)" />
@@ -1398,8 +1288,7 @@
 
 											<div
 												style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.4em;">
-												<span id="RequireShiftforTooltip" style="color: #aaa;">Require Shift for
-													Tooltip</span>
+												<span id="RequireShiftforTooltip" style="color: #aaa;">提示需按 Shift</span>
 												<input id="settingsRequireShiftForTooltip" type="checkbox"
 													style="width:1.5em; height:1.5em; cursor: pointer;"
 													onclick="setRequireShiftForTooltip(this.checked)" />
@@ -1407,7 +1296,7 @@
 
 											<div
 												style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.4em;">
-												<span style="color: #aaa;">Turbo Animations</span>
+												<span style="color: #aaa;">极速动画</span>
 												<input id="settingsTaskAnimations" type="checkbox"
 													style="width:1.5em; height:1.5em; cursor: pointer;"
 													onclick="setTaskAnimations(this.checked)" />
@@ -1415,78 +1304,77 @@
 
 											<div
 												style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.4em; flex-wrap: wrap; gap: 0.5em;">
-												<span style="color: #aaa;">Currency Notation</span>
+												<span style="color: #aaa;">货币表示法</span>
 												<div class="btn-group"
 													style="display: flex; gap: 2px; flex-wrap: wrap;">
 													<button class="w3-button button CurrencyNotation selected"
-														onclick="setCurrency(0)">Medieval</button>
+														onclick="setCurrency(0)">中世纪</button>
 													<button class="w3-button button CurrencyNotation"
-														onclick="setCurrency(1)">Extended</button>
+														onclick="setCurrency(1)">扩展</button>
 													<button class="w3-button button CurrencyNotation"
-														onclick="setCurrency(2)">British £sd</button>
+														onclick="setCurrency(2)">英镑 £sd</button>
 													<button class="w3-button button CurrencyNotation"
-														onclick="setCurrency(3)">Modern $</button>
+														onclick="setCurrency(3)">现代 $</button>
 												</div>
 											</div>
 
 											<div
 												style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.4em; flex-wrap: wrap; gap: 0.5em;">
-												<span style="color: #aaa;">Number Notation</span>
+												<span style="color: #aaa;">数字表示法</span>
 												<div class="btn-group" style="display: flex; gap: 2px;">
 													<button class="w3-button button Notation selected"
-														onclick="setNotation(0)">Standard</button>
+														onclick="setNotation(0)">标准</button>
 													<button class="w3-button button Notation"
-														onclick="setNotation(1)">Scientific</button>
+														onclick="setNotation(1)">科学</button>
 													<button class="w3-button button Notation"
-														onclick="setNotation(2)">Engineering</button>
+														onclick="setNotation(2)">工程</button>
 												</div>
 											</div>
 
 											<div
 												style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.4em;">
-												<span style="color: #aaa;">Layout Style</span>
+												<span style="color: #aaa;">布局样式</span>
 												<div class="btn-group" style="display: flex; gap: 2px;">
 													<button class="w3-button button Layout"
-														onclick="setLayout(1)">Standard</button>
-													<button class="w3-button button Layout" onclick="setLayout(0)">W I D
-														E</button>
+														onclick="setLayout(1)">标准</button>
+													<button class="w3-button button Layout" onclick="setLayout(0)">宽
+														屏</button>
 												</div>
 											</div>
 
 											<div
 												style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.4em;">
-												<span style="color: #aaa;">Font Size</span>
+												<span style="color: #aaa;">字体大小</span>
 												<div style="display: flex; align-items: center; gap: 0.5em;">
 													<button class="w3-button button"
-														onclick="setFontSizeSmaller()">Smaller</button>
+														onclick="setFontSizeSmaller()">缩小</button>
 													<button class="w3-button button"
-														onclick="setFontSizeLarger()">Larger</button>
+														onclick="setFontSizeLarger()">放大</button>
 													<button class="w3-button button"
-														onclick="setFontSizeDefault()">Default</button>
+														onclick="setFontSizeDefault()">默认</button>
 												</div>
 											</div>
 
 											<div
 												style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.4em;">
-												<span style="color: #aaa;">Color Scheme</span>
+												<span style="color: #aaa;">配色方案</span>
 												<div class="btn-group" style="display: flex; gap: 2px;">
 													<button class="w3-button button Theme"
-														onClick="setTheme(0)">Light</button>
+														onClick="setTheme(0)">浅色</button>
 													<button class="w3-button button Theme"
-														onClick="setTheme(1)">Dark</button>
-													<button class="w3-button button Theme" onClick="setTheme(2)">Color
-														Blind</button>
+														onClick="setTheme(1)">深色</button>
+													<button class="w3-button button Theme" onClick="setTheme(2)">色盲</button>
 												</div>
 											</div>
 
 											<div
 												style="display: flex; justify-content: space-between; align-items: center;">
-												<span style="color: #aaa;">Dangerous Keybinds</span>
+												<span style="color: #aaa;">危险快捷键</span>
 												<div class="btn-group" style="display: flex; gap: 2px;">
 													<button class="w3-button button EnableKeybinds"
-														onClick="setEnableKeybinds(true)">Enabled</button>
+														onClick="setEnableKeybinds(true)">启用</button>
 													<button class="w3-button button EnableKeybinds"
-														onClick="setEnableKeybinds(false)">Disabled</button>
+														onClick="setEnableKeybinds(false)">禁用</button>
 												</div>
 											</div>
 										</div>
@@ -1494,42 +1382,35 @@
 										<div class="panel w3-padding" style="margin-bottom: 1em;">
 											<div class="text-caption"
 												style="font-weight: bold; color: #24d2d9; margin-bottom: 0.6em;">
-												Shortcuts</div>
+												快捷键</div>
 											<div
 												style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.4em; color: #888; font-size: 11px;">
-												<div><b style="color: #bbb;">Arrow Keys</b> - Menu navigation</div>
-												<div><b style="color: #bbb;">Spacebar</b> - Pause game</div>
-												<div id="key1" class="hidden"><b style="color: #bbb;">Q</b> - Touch the
-													eye</div>
-												<div id="key2" class="hidden"><b style="color: #bbb;">E</b> - Embrace
-													evil</div>
-												<div id="key3" class="hidden"><b style="color: #bbb;">T</b> - Transcend
-												</div>
-												<div id="key4" class="hidden"><b style="color: #bbb;">U</b> - Collapse
-													universe</div>
-												<div id="key5" class="hidden"><b style="color: #bbb;">G</b> - Go to
-													Metaverse</div>
-												<div id="keyChallenge" class="hidden"><b style="color: #bbb;">1-6</b> -
-													Enter / Exit Challenges</div>
+												<div><b style="color: #bbb;">方向键</b> - 菜单导航</div>
+												<div><b style="color: #bbb;">空格键</b> - 暂停游戏</div>
+												<div id="key1" class="hidden"><b style="color: #bbb;">Q</b> - 触碰眼睛</div>
+												<div id="key2" class="hidden"><b style="color: #bbb;">E</b> - 拥抱邪恶</div>
+												<div id="key3" class="hidden"><b style="color: #bbb;">T</b> - 超越</div>
+												<div id="key4" class="hidden"><b style="color: #bbb;">U</b> - 坍缩宇宙</div>
+												<div id="key5" class="hidden"><b style="color: #bbb;">G</b> - 前往元宇宙</div>
+												<div id="keyChallenge" class="hidden"><b style="color: #bbb;">1-6</b> - 进入/退出挑战</div>
 											</div>
 										</div>
 
 										<div class="panel w3-padding"
 											style="display: flex; justify-content: space-between; align-items: center; color: gray; font-size: smaller;  margin-top: 1.5em;">
 											<div style="line-height: 1.5;">
-												Based on a <a href="https://symb1.github.io/progress_knight_2/"
+												基于 <a href="https://symb1.github.io/progress_knight_2/"
 													target="_blank"
-													style="color: #24d2d9; text-decoration: none;">Progress Knight
-													2.0</a> mod<br>
-												Original game by <a href="https://ihtasham42.github.io/progress-knight/"
+													style="color: #24d2d9; text-decoration: none;">Progress Knight 2.0</a> 模组<br>
+												原版游戏由 <a href="https://ihtasham42.github.io/progress-knight/"
 													target="_blank"
-													style="color: #24d2d9; text-decoration: none;">Ihtasham42</a>
+													style="color: #24d2d9; text-decoration: none;">Ihtasham42</a> 制作
 											</div>
 											<div style="display: flex; align-items: center; gap: 1em;">
 												<a href="https://discord.gg/fTRS4pHGka" target="_blank"
 													style="display: flex; align-items: center; gap: 0.3em; color: #8c9eff; text-decoration: none;">
 													<img src="img/discord_icon.png" style="width:2em; height:2em;">
-													Community
+													社区
 												</a>
 												<a href="https://github.com/indomit/progress_knight_2" target="_blank"
 													style="color: #aaa; text-decoration: none;">Github</a>
@@ -1537,7 +1418,7 @@
 										</div>
 										<div class="panel w3-padding challenge-header">
 											<div id="fpsCounter" style="font-size: smaller; color: #555; ">FPS: --</div>
-											<span id="version" style="font-size: smaller; color: #555; ">Version:
+											<span id="version" style="font-size: smaller; color: #555; ">版本：
 												2.7.1</span>
 										</div>
 									</div>
@@ -1547,91 +1428,69 @@
 									<div id="statsPage" class="page">
 										<div>
 											<ul>
-												<li>You started playing the game on <span id="startDateDisplay"></span>,
-													<span id="playedDaysDisplay"></span> days ago.
+												<li>你开始游戏于 <span id="startDateDisplay"></span>，
+													<span id="playedDaysDisplay"></span> 天前。
 												</li>
-												<li>You have played for <span id="playedRealTimeDisplay"></span> (real
-													time).</li>
-												<li>Your existence has spanned <span id="playedGameTimeDisplay"></span>
-													(game time).</li>
+												<li>你已游玩 <span id="playedRealTimeDisplay"></span>（现实时间）。</li>
+												<li>你的存在已跨越 <span id="playedGameTimeDisplay"></span>（游戏时间）。</li>
 											</ul>
 										</div>
 										<div id="statsRebirth1" class="hidden">
 											<ul>
-												<li>You have touched the eye <span id="rebirthOneCountDisplay"></span>
-													times.</li>
-												<li>You have spent <span id="rebirthOneTimeDisplay"></span> in this
-													life.</li>
-												<li>Your fastest touch is in <span
-														id="rebirthOneFastestDisplay"></span>.</li>
+												<li>你已触碰眼睛 <span id="rebirthOneCountDisplay"></span> 次。</li>
+												<li>你已花费 <span id="rebirthOneTimeDisplay"></span> 在此生。</li>
+												<li>最快触碰为 <span id="rebirthOneFastestDisplay"></span>。</li>
 											</ul>
 										</div>
 										<div id="statsRebirth2" class="hidden">
 											<ul>
-												<li>You have embraced evil <span id="rebirthTwoCountDisplay"></span>
-													times.</li>
-												<li>You have spent <span id="rebirthTwoTimeDisplay"></span> in this
-													embrace.</li>
-												<li>Your fastest embrace is in <span
-														id="rebirthTwoFastestDisplay"></span>.</li>
-												<li id="statsEvilGain" class="hidden">You gain <span
-														id="evilPerSecondDisplay"></span> evil/s. Maximum <span
-														id="maxEvilPerSecondDisplay"></span> evil/s was at <span
-														id="maxEvilPerSecondRtDisplay"></span>.</li>
+												<li>你已拥抱邪恶 <span id="rebirthTwoCountDisplay"></span> 次。</li>
+												<li>你已花费 <span id="rebirthTwoTimeDisplay"></span> 在此拥抱中。</li>
+												<li>最快拥抱为 <span id="rebirthTwoFastestDisplay"></span>。</li>
+												<li id="statsEvilGain" class="hidden">你获得 <span
+														id="evilPerSecondDisplay"></span> 邪恶/秒。最大 <span
+														id="maxEvilPerSecondDisplay"></span> 邪恶/秒 在 <span
+														id="maxEvilPerSecondRtDisplay"></span>。</li>
 											</ul>
 										</div>
 										<div id="statsRebirth3" class="hidden">
 											<ul>
-												<li>You have transcended <span id="rebirthThreeCountDisplay"></span>
-													times.</li>
-												<li>You have spent <span id="rebirthThreeTimeDisplay"></span> in this
-													transcension.</li>
-												<li>Your fastest transcension is in <span
-														id="rebirthThreeFastestDisplay"></span>.</li>
-												<li id="statsEssenceGain" class="hidden">You gain <span
-														id="essencePerSecondDisplay"></span> essence/s. Maximum <span
-														id="maxEssencePerSecondDisplay"></span> essence/s was at <span
-														id="maxEssencePerSecondRtDisplay"></span>.</li>
+												<li>你已超越 <span id="rebirthThreeCountDisplay"></span> 次。</li>
+												<li>你已花费 <span id="rebirthThreeTimeDisplay"></span> 在此超越中。</li>
+												<li>最快超越为 <span id="rebirthThreeFastestDisplay"></span>。</li>
+												<li id="statsEssenceGain" class="hidden">你获得 <span
+														id="essencePerSecondDisplay"></span> 精华/秒。最大 <span
+														id="maxEssencePerSecondDisplay"></span> 精华/秒 在 <span
+														id="maxEssencePerSecondRtDisplay"></span>。</li>
 											</ul>
 										</div>
 										<div id="statsRebirth4" class="hidden">
 											<ul>
-												<li>You have collapsed the universe <span
-														id="rebirthFourCountDisplay"></span> times.</li>
-												<li>You have spent <span id="rebirthFourTimeDisplay"></span> in this
-													collapse.</li>
-												<li>Your fastest collapse is in <span
-														id="rebirthFourFastestDisplay"></span>.</li>
+												<li>你已坍缩宇宙 <span id="rebirthFourCountDisplay"></span> 次。</li>
+												<li>你已花费 <span id="rebirthFourTimeDisplay"></span> 在此坍缩中。</li>
+												<li>最快坍缩为 <span id="rebirthFourFastestDisplay"></span>。</li>
 											</ul>
 										</div>
 										<div id="statsRebirth5" class="hidden">
 											<ul>
-												<li>You traveled to the Metaverse <span
-														id="rebirthFiveCountDisplay"></span> times.</li>
-												<li>You have spent <span id="rebirthFiveTimeDisplay"></span> in this
-													Metaverse.</li>
-												<li>Your fastest Metaverse is in <span
-														id="rebirthFiveFastestDisplay"></span>.</li>
+												<li>你前往元宇宙 <span id="rebirthFiveCountDisplay"></span> 次。</li>
+												<li>你已花费 <span id="rebirthFiveTimeDisplay"></span> 在此元宇宙中。</li>
+												<li>最快元宇宙为 <span id="rebirthFiveFastestDisplay"></span>。</li>
 											</ul>
 										</div>
 										<div id="statsChallenges">
 											<ul>
-												<li id="challengeStat1">Challenge 1 Reward: Multiplies happiness by
-													x<span id="challengeHappinessBuffDisplay"></span>.</li>
-												<li id="challengeStat2">Challenge 2 Reward: Multiplies income by x<span
-														id="challengeIncomeBuffDisplay"></span>.</li>
-												<li id="challengeStat3">Challenge 3 Reward: Multiplies time warping by
-													x<span id="challengeTimewarpingBuffDisplay"></span>.</li>
-												<li id="challengeStat4">Challenge 4 Reward: Multiplies essence gain by
-													x<span id="challengeEssenceGainBuffDisplay"></span>.</li>
-												<li id="challengeStat5">Challenge 5 Reward: Multiplies evil gain by
-													x<span id="challengeEvilGainBuffDisplay"></span>.</li>
-												<li id="challengeStat6">Challenge 6 Reward: Multiplies Dark Matter gain
-													by x<span id="challengeDarkMaterGainBuffDisplay"></span>.</li>
+												<li id="challengeStat1">挑战 1 奖励：幸福度倍率 x<span id="challengeHappinessBuffDisplay"></span>。</li>
+												<li id="challengeStat2">挑战 2 奖励：收入倍率 x<span
+														id="challengeIncomeBuffDisplay"></span>。</li>
+												<li id="challengeStat3">挑战 3 奖励：时间扭曲倍率 x<span id="challengeTimewarpingBuffDisplay"></span>。</li>
+												<li id="challengeStat4">挑战 4 奖励：精华获取倍率 x<span id="challengeEssenceGainBuffDisplay"></span>。</li>
+												<li id="challengeStat5">挑战 5 奖励：邪恶获取倍率 x<span id="challengeEvilGainBuffDisplay"></span>。</li>
+												<li id="challengeStat6">挑战 6 奖励：暗物质获取倍率 x<span id="challengeDarkMaterGainBuffDisplay"></span>。</li>
 											</ul>
 										</div>
 										<div id="NextEvents">
-											<div>Next Events:</div>
+											<div>下个事件：</div>
 											<ul class="events-list">
 												<li id="NextEvent0" hidden="hidden"></li>
 												<li id="NextEvent1"></li>
@@ -1664,22 +1523,22 @@
 	</div>
 	<div id="custom-confirm" class="modal-overlay hidden">
 		<div class="modal-card">
-			<h2 id="modal-title">WARNING</h2>
-			<p id="modal-text">Something went wrong.</p>
+			<h2 id="modal-title">警告</h2>
+			<p id="modal-text">出错了。</p>
 			<div class="modal-buttons">
-				<button id="modal-cancel-btn" class="btn btn-safe">No, save my eyes!</button>
-				<button id="modal-confirm-btn" class="btn btn-danger">Yes, blind me</button>
+				<button id="modal-cancel-btn" class="btn btn-safe">不，保护我的眼睛！</button>
+				<button id="modal-confirm-btn" class="btn btn-danger">是，闪瞎我</button>
 			</div>
 		</div>
 	</div>
 	<div id="game-confirm" class="modal-overlay hidden">
 		<div class="modal-card universal-card">
-			<h2 id="game-modal-title">Confirm Action</h2>
-			<p id="game-modal-text">Are you sure you want to do this?</p>
+			<h2 id="game-modal-title">确认操作</h2>
+			<p id="game-modal-text">你确定要这样做吗？</p>
 			<input id="game-modal-input" type="text" class="game-input hidden" autocomplete="off" />
 			<div class="modal-buttons">
-				<button id="game-modal-cancel-btn" class="btn btn-neutral">Cancel</button>
-				<button id="game-modal-confirm-btn" class="btn btn-action">OK</button>
+				<button id="game-modal-cancel-btn" class="btn btn-neutral">取消</button>
+				<button id="game-modal-confirm-btn" class="btn btn-action">确定</button>
 			</div>
 		</div>
 	</div>
@@ -1687,6 +1546,7 @@
 	<script type="text/javascript" src="js/lib/HackTimer.js"></script>
 	<script type="text/javascript" src="js/lib/UPNG.js"></script>
 	<script type="text/javascript" src="js/lib/test.js"></script>
+	<script type="text/javascript" src="js/zh_cn.js"></script>
 	<script type="text/javascript" src="js/el.js"></script>
 	<script type="text/javascript" src="js/changelog.js"></script>
 	<script type="text/javascript" src="js/utils.js"></script>

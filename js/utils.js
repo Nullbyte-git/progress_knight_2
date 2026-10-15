@@ -56,7 +56,7 @@ function fastFloorToString(number, decimals) {
  */
 function format(number, decimals = 1) {
     if (number === Infinity)
-        return "Infinity"
+        return t("Infinity")
     const units = ["", "k", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "O", "N", "D", "Ud", "Dd", "Td", "Qad", "Qid", "Sxd", "Spd", "Od", "Nd", "V", "Uv", "Dv", "Tv",
         "Qav", "Qiv", "Sxv", "Spv", "Ov", "Nv", "Tr", "Ut", "Dt", "Tt"]
 
@@ -236,25 +236,25 @@ function safeFormatCoins(target, coins) {
  * @returns {string}
  */
 function formatTime(sec_num, show_ms = false) {
-    if (sec_num == null) return "unknown";
+    if (sec_num == null) return t("unknown");
     if (sec_num < 0) return '-' + formatTime(-sec_num, show_ms);
 
     if (sec_num >= 31536000000) { // 1000 * 31536000
         let years = floor(sec_num / 31536000);
-        return formatWhole(years) + ' years';
+        return formatWhole(years) + ' ' + t('years');
     }
 
     let prefix = '';
 
     if (sec_num >= 31536000) {
         let years = floor(sec_num / 31536000);
-        prefix += years + 'y ';
+        prefix += years + t('y') + ' ';
         sec_num %= 31536000;
     }
 
     if (sec_num >= 86400) {
         let days = floor(sec_num / 86400);
-        prefix += days + 'd ';
+        prefix += days + t('d') + ' ';
         sec_num %= 86400;
     }
 
@@ -354,24 +354,24 @@ function formatAge(days) {
     const years = daysToYears(days)
     const day = getCurrentDay(days)
     if (years > 10000)
-        return "Age " + format(years)
+        return t("Age") + " " + format(years)
     else
-        return "Age " + years + " Day " + day
+        return t("Age") + " " + years + " " + t("Day") + " " + day
 }
 
 /** @param {number} days */
 function formatGameDays(days) {
-    if (days === Infinity || isNaN(days)) return "Infinity"
+    if (days === Infinity || isNaN(days)) return t("Infinity")
 
     const years = floor(days / 365)
     const remainingDays = floor(days % 365)
 
     if (years > 10000) {
-        return format(years) + " years"
+        return format(years) + " " + t("years")
     } else if (years > 0) {
-        return `${years} year${years > 1 ? 's' : ''} ${remainingDays} day${remainingDays !== 1 ? 's' : ''}`
+        return `${years} ${t("year")}${years > 1 ? t("s") : ''} ${remainingDays} ${t("day")}${remainingDays !== 1 ? t("s") : ''}`
     } else {
-        return `${remainingDays} day${remainingDays !== 1 ? 's' : ''}`
+        return `${remainingDays} ${t("day")}${remainingDays !== 1 ? t("s") : ''}`
     }
 }
 
@@ -413,9 +413,9 @@ function toId(str) {
  */
 function getFormattedChallengeTaskGoal(taskName, level) {
     if (level < 100000)
-        return taskName + " lvl " + formatLevel(level)
+        return t(taskName) + " " + t("lvl ") + formatLevel(level)
     else
-        return "Great " + taskName + " lvl " + formatLevel(ceil(level / 1000))
+        return t("Great ") + t(taskName) + " " + t("lvl ") + formatLevel(ceil(level / 1000))
 }
 
 /**
@@ -427,7 +427,7 @@ function getFormattedTitle(parameter) {
     let title = parameter.replaceAll("_", " ")
     title = title.charAt(0).toUpperCase() + title.slice(1)
 
-    return title
+    return t(title)
 }
 
 

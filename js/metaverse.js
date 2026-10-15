@@ -263,7 +263,7 @@ const perk_descriptions = {
 
 /** @param {string} perkName */
 function getMetaversePerkName(perkName) {
-    return perk_names[perkName]
+    return t(perk_names[perkName])
 }
 
 /** @param {string} perkName */
@@ -325,14 +325,14 @@ function collectPerkPoints(value) {
 
 function getBoostCooldownString() {
     return gameData.boost_active
-        ? "Active: " + formatTime(gameData.boost_timer)
-        : (gameData.boost_cooldown <= 0 ? "Ready!" : "Cooldown: " + formatTime(gameData.boost_cooldown))
+        ? t("Active: ") + formatTime(gameData.boost_timer)
+        : (gameData.boost_cooldown <= 0 ? t("Ready!") : t("Cooldown: ") + formatTime(gameData.boost_cooldown))
 }
 
 function getBoostCooldownButtonString() {
     return gameData.boost_active
         ? formatTime(gameData.boost_timer)
-        : (gameData.boost_cooldown <= 0 ? "Ready!" : formatTime(gameData.boost_cooldown))
+        : (gameData.boost_cooldown <= 0 ? t("Ready!") : formatTime(gameData.boost_cooldown))
 }
 
 function getTimeIsAFlatCircleXP() {
@@ -354,4 +354,3 @@ function getHypercubeCap(next = 0) {
 
     return 1e7 * pow(10, (gameData.rebirthFiveCount + next) * 3)
 }
-

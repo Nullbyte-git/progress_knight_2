@@ -43,7 +43,7 @@ function initializeUI() {
         hideMaxLevel()
 
     if (isTouchDevice)
-        safeUpdateText("RequireShiftforTooltip", "Hide tooltips");
+        safeUpdateText("RequireShiftforTooltip", t("Hide tooltips"));
 }
 
 function showMaxLevel() {
@@ -83,16 +83,6 @@ function renderFPS() {
 function updateUI() {
     if (isProcessingOfflineProgress)
         return
-    /*
-        NOTE: To ensure that performance does not decrease,
-        please only call the render function when the user can actually see the content.
-        If they can always see the content put the function call at the top of this function.
- 
-        NOTE2: Do NOT render anything to the screen outside of this function.
-
-        NOTE3: Update DOM elements by using only safeUpdate*() functions
-    */
-
 
     // always render Requirements
     renderRequirements()
@@ -165,7 +155,7 @@ function renderSideBar() {
     safeUpdateText("lifespanDisplay", formatWhole(daysToYears(getLifespan())))
     safeUpdateText("realtimeDisplay", formatTime(gameData.realtime))
     safeUpdateText("boostCooldownDisplay", getBoostCooldownButtonString())
-    safeUpdateText("pauseButton", gameData.paused ? "Play" : "Pause")
+    safeUpdateText("pauseButton", gameData.paused ? t("Play") : t("Pause"))
     safeUpdateHidden("boostPanel", gameData.rebirthFiveCount == 0)
     renderBoostButton("boostButton")
     safeFormatCoins("coinDisplay", gameData.coins)
@@ -195,7 +185,7 @@ function renderSideBar() {
     )
 
     safeUpdateText("timeWarpingDisplay", "x" + format(gameData.game_speed / baseGameSpeed, 2))
-    safeUpdateText("hypercubesDisplay", formatTreshold(gameData.hypercubes)) // + " (+" + format(getHypercubeGeneration(), 2) + ")")
+    safeUpdateText("hypercubesDisplay", formatTreshold(gameData.hypercubes))
 
     const rebirth5button = elById("metaversePerkPointsGainButtonDisplay")
 
@@ -210,7 +200,7 @@ function renderSideBar() {
         safeUpdateClass(rebirth5button, "color-hypercubes", true)
     }
     else {
-        safeUpdateText("metaversePerkPointsGainButtonDisplay", "Unlock Hypercubes")
+        safeUpdateText("metaversePerkPointsGainButtonDisplay", t("Unlock Hypercubes"))
     }
 
     const indicatorConfigs = [
@@ -243,7 +233,6 @@ function renderSideBar() {
         }
     ];
 
-    // 2. Process and render each button using the same single loop
     for (const config of indicatorConfigs) {
         const current = config.getCurrentValue();
         const gain = config.getAvailableGain();
@@ -261,7 +250,6 @@ function renderSideBar() {
         );
     }
 
-    // базовая видимость
     let rebirthButton1Visible = allowRebirth(1)
     let rebirthButton2Visible = allowRebirth(2)
     let rebirthButton3Visible = allowRebirth(3)
@@ -284,7 +272,6 @@ function renderSideBar() {
             rebirthButton4Visible = true
     }
 
-    // кастомная видимость кнопки 5
     if (getHypercubeCap() == Infinity && gameData.essence < 1e90 && gameData.perks_points < 7500)
         rebirthButton5Visible = false
     else if (gameData.perks_points > 7500)
@@ -297,7 +284,6 @@ function renderSideBar() {
     safeUpdateClass("rebirthButton5", "hidden", !rebirthButton5Visible)
 
 
-    // чтобы не ебать мозг, дизеблим кнопки всегда, даже если они невидимы, чтобы так надо вот почему   
     const buttonsConfig = [
         { id: "rebirthButton1", req: "Rebirth note 2" },
         { id: "rebirthButton2", req: "Rebirth note 3" },
@@ -361,9 +347,9 @@ function renderEventUI() {
 
     const event = eventsData[event_id];
 
-    safeUpdateText("eventName", event.name);
-    safeUpdateText("eventDescription", event.desc);
-    safeUpdateText("eventBuff", event.effect + event.mult);
+    safeUpdateText("eventName", t(event.name));
+    safeUpdateText("eventDescription", t(event.desc));
+    safeUpdateText("eventBuff", t(event.effect) + event.mult);
     safeUpdateText("eventTime", formatTime(getSecondsUntilEventEnd()));
 
     if (uiEventStyleCache.currentStyle !== event.style) {
@@ -475,7 +461,7 @@ function renderProgressBar(task, progressFill, progressBar) {
 function renderTaskRow(task) {
     const row = task.row
 
-    safeUpdateText(`${row} .progressBar .name`, (task.isHero ? "Great " : "") + task.name);
+    safeUpdateText(`${row} .progressBar .name`, (task.isHero ? t("Great ") : "") + t(task.name));
 
     const progressBar = el(`${row} .progressBar`);
     const progressFill = el(`${row} .progressFill`);
@@ -533,19 +519,19 @@ function renderRebirth() {
 
     // 1. Evil
     const evilReq = getEvilRequirement()
-    const evilText = evilReq === 200 ? "2 whole centuries" :
-        evilReq === 100 ? "1 century" :
-            `${evilReq} years`
+    const evilText = evilReq === 200 ? t("2 whole centuries") :
+        evilReq === 100 ? t("1 century") :
+            `${evilReq} ${t("years")}`
     safeUpdateText("age2", evilText)
     safeUpdateText("age2a", formatWhole(evilReq))
 
     // 2. Void
     const voidReq = getVoidRequirement()
-    const voidText = voidReq === 1000 ? "a millennium" :
-        voidReq > 100 ? `${voidReq / 100} whole centuries` :
-            "1 century"
+    const voidText = voidReq === 1000 ? t("a millennium") :
+        voidReq > 100 ? `${voidReq / 100} ${t("whole centuries")}` :
+            t("1 century")
 
-    const voidWordText = voidReq === 1000 ? "thousand " : `${numberWords[voidReq / 100]} hundred `
+    const voidWordText = voidReq === 1000 ? t("thousand ") : t(numberWords[voidReq / 100] + " hundred ")
 
     safeUpdateText("age3", voidText)
     safeUpdateText("age3a", voidWordText)
@@ -555,9 +541,9 @@ function renderRebirth() {
     let celestialText = ""
 
     if (celestialReq >= 1000) {
-        celestialText = celestialReq === 1000 ? "a millennium" : `${numberWords[celestialReq / 1000]} millennia`
+        celestialText = celestialReq === 1000 ? t("a millennium") : `${t(numberWords[celestialReq / 1000])} ${t("millennia")}`
     } else {
-        celestialText = celestialReq === 100 ? "1 century" : `${celestialReq / 100} whole centuries`
+        celestialText = celestialReq === 100 ? t("1 century") : `${celestialReq / 100} ${t("whole centuries")}`
     }
 
     const celestialCapitalized = celestialText.charAt(0).toUpperCase() + celestialText.slice(1)
@@ -575,7 +561,7 @@ function renderRebirth() {
 }
 
 function renderEvilPerks() {
-    safeUpdateText("eppInfo", (gameData.essence > 0) ? "Evil and buffed by Essence" : "Evil")
+    safeUpdateText("eppInfo", (gameData.essence > 0) ? t("Evil and buffed by Essence") : t("Evil"))
     safeUpdateText("evilperksDisplay", format(gameData.evil_perks_points, 3))
     safeUpdateText("evilperksGainDisplay", format(getEvilPerksGeneration() * 365))
     safeUpdateText("eyeReq", formatWhole(getEyeRequirement()))
@@ -627,7 +613,6 @@ function renderEvilPerksSideBar() {
     for (var i = 1; i <= 5; i++) {
         safeUpdateText("reqSideBar" + i, sideBarRequirements[i - 1]());
 
-        // Обновляем стоимость и состояние перка
         const perkCost = getEvilPerkCost(i)
         if ((i < 5) || (gameData.requirements["Evil perk essence SideBar"].completed))
             safeUpdateClass("evilperkSideBar" + i, "hidden", perkCost === Infinity)
@@ -741,7 +726,9 @@ function renderMilestones() {
             effect = milestone.baseData.effect
 
         if (effect > 1)
-            desc = "x" + format(effect, 1) + " " + desc
+            desc = "x" + format(effect, 1) + " " + t(desc)
+        else
+            desc = t(desc)
 
         if (key == "Magic Eye")
             desc = desc.replace('65', "" + getEyeRequirement())
@@ -749,6 +736,7 @@ function renderMilestones() {
         safeUpdateText(`${row} .description`, desc)
     }
 }
+
 /**
  * 
  * @param {string} elemName 
@@ -773,7 +761,7 @@ function renderMetaverse() {
 
     for (var i = 0; i < 3; i++) {
         const nextH = getNextPowerOfNumber(gameData.hypercubes * pow(10, i))
-        const newText = format(nextH) + " Hypercubes in " + formatTime(getTimeTillNextHypercubePower(i))
+        const newText = format(nextH) + " " + t("Hypercubes") + " " + t("in") + " " + formatTime(getTimeTillNextHypercubePower(i))
         const elem = elById("timeTillNextHypercubePower" + (i + 1))
 
         safeUpdateText(elem, newText)
@@ -815,7 +803,7 @@ function renderMetaverse() {
 
     const isAltarActive = gameData.metaverse.challenge_altar !== 0;
     safeUpdateText("challengeAltarCost", format(challengeAltarCost()))
-    safeUpdateText("challengeAltarState", isAltarActive ? "Active" : "")
+    safeUpdateText("challengeAltarState", isAltarActive ? t("Active") : "")
     safeUpdateDisabled("challengeAltarButton", !canBuyChallengeAltar())
     safeUpdateClass("challengeAltarButton", "hidden", isAltarActive)
 
@@ -871,7 +859,7 @@ function renderMetaversePerkButtons() {
             if (isAvailable) {
                 safeUpdateText(perkNameElement, getMetaversePerkName(key));
             } else {
-                safeUpdateText(perkNameElement, "LOCKED");
+                safeUpdateText(perkNameElement, t("LOCKED"));
 
                 if (index % 2 === 1) {
                     hide_next = true;
@@ -941,7 +929,7 @@ function renderDarkMatterShop() {
     const isMiracleVisible = !hasMiracle || !isEnoughDarkMatter;
     safeUpdateClass(aMiracleBuyButton, "hidden", !isMiracleVisible);
     if (isMiracleVisible)
-        safeUpdateText(aMiracleBuyButton, hasMiracle ? "Refund" : "Buy a Miracle");
+        safeUpdateText(aMiracleBuyButton, hasMiracle ? t("Refund") : t("Buy a Miracle"));
 
     const isGeneratorInfinity = getDarkOrbGeneration() === Infinity;
     safeUpdateClass("darkOrbGeneratorBuyButton", "hidden", isGeneratorInfinity);
@@ -991,17 +979,17 @@ function renderDarkMatterSkillTreeButton(id, categoryBought, elementBought, canB
         safeUpdateDisabled(element, categoryBought || !canBuy);
 
         if (categoryBought) {
-            safeUpdateText(id, elementBought ? "Accepted" : "Rejected");
+            safeUpdateText(id, elementBought ? t("Accepted") : t("Rejected"));
             safeUpdateClass(element, "w3-green", elementBought);
             safeUpdateClass(element, "w3-red", !elementBought);
         } else {
-            safeUpdateText(id, "Buy");
+            safeUpdateText(id, t("Buy"));
             safeUpdateClass(element, "w3-green", false);
             safeUpdateClass(element, "w3-red", false);
         }
     } else {
         safeUpdateDisabled(element, elementBought);
-        safeUpdateText(id, elementBought ? "Accepted" : "Buy");
+        safeUpdateText(id, elementBought ? t("Accepted") : t("Buy"));
 
         safeUpdateClass(element, "w3-green", elementBought);
         safeUpdateClass(element, "w3-red", false);
@@ -1026,7 +1014,6 @@ function renderDarkMatterSkillTree() {
         const currentCost = DARK_MATTER_SKILL_COSTS[skill.costIndex]
         const canAfford = darkMatter >= currentCost
 
-        // skillState: 0 = не куплено, 1 = первый вариант, 2 = второй вариант, 3 = оба
         renderDarkMatterSkillTreeButton(
             skill.id + "1",
             skillState !== 0,
@@ -1135,15 +1122,15 @@ function createHeaderRow(templates, categoryType, categoryName, categoryTypeName
     const categoryElement = headerRow.querySelector(".category")
 
     if (categoryType == itemCategories) {
-        categoryElement.querySelector(".name").textContent = categoryName
+        categoryElement.querySelector(".name").textContent = t(categoryName)
     } else {
-        categoryElement.textContent = categoryName
+        categoryElement.textContent = t(categoryName)
     }
 
 
     if (categoryType == jobCategories || categoryType == skillCategories) {
         const valueTypeElement = headerRow.querySelector(".valueType")
-        valueTypeElement.textContent = categoryType == jobCategories ? "Income" : "Effect"
+        valueTypeElement.textContent = categoryType == jobCategories ? t("Income") : t("Effect")
     }
 
     headerRow.style.backgroundColor = headerRowColors[categoryName]
@@ -1168,7 +1155,7 @@ function createRequiredRow(categoryName) {
 function createRow(templates, name, categoryName, categoryType, categoryTypeName) {
     const row = templates.row.content.firstElementChild.cloneNode(true)
 
-    row.querySelector(".name").textContent = name
+    row.querySelector(".name").textContent = t(name)
     row.id = "row" + toId(name)
 
     if (categoryType == itemCategories) {
@@ -1442,7 +1429,6 @@ function setLayout(id, needsave = true) {
         maincolumn.classList.remove("plain-main-column")
         maincolumn.classList.add("tabs-main-column")
 
-        // Возвращаем страницы по своим вкладкам
         skillsTab.appendChild(skillPage)
         shopTab.appendChild(itemPage)
 
@@ -1457,14 +1443,14 @@ function setLayout(id, needsave = true) {
         setTabDarkMatter("shopTab", false)
 
         maincolumnDM.classList.remove("settings-main-column")
-        if (dmTitle) dmTitle.textContent = "Dark Matter Abilities "
+        if (dmTitle) dmTitle.textContent = t("Dark Matter Abilities ")
     } else {
         tabcolumnDM.classList.remove("hidden")
         const skillTreeTab = elById("skillTreeTab")
         skillTreeTab?.appendChild(skillTreePage)
 
         maincolumnDM.classList.add("settings-main-column")
-        if (dmTitle) dmTitle.textContent = "Dark Matter: "
+        if (dmTitle) dmTitle.textContent = t("Dark Matter: ")
     }
 
     if (isWideLayout) {
@@ -1616,7 +1602,6 @@ function setTab(selectedTab, needsave = true) {
 function setSubTab(tab, tabClassName, buttonClassName, needsave = true) {
     const element = elById(tab + "TabButton")
 
-    // Скрываем все вкладки этой категории через кэш
     allByClass(tabClassName).forEach(function (t) {
         t.style.display = "none"
     })
@@ -1768,7 +1753,6 @@ window.addEventListener('keydown', function (e) {
         if (e.key == "ArrowRight") changeTab(1)
         if (e.key == "ArrowLeft") changeTab(-1)
 
-        // The "dangerous" keybinds can be disabled.
         if (!gameData.settings.enableKeybinds)
             return
 
@@ -1829,6 +1813,3 @@ async function f2() {
 
     f1(data)
 }
-
-
-
